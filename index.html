@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>CHOK BÉTON — Planning</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F5F7;--surface:#fff;--border:#E2E4E9;
+  --text:#1C2333;--text2:#5A6478;--text3:#9AA0B2;
+  --accent:#1565C0;--r:6px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:'DM Sans',sans-serif;font-size:14px;background:var(--bg);color:var(--text)}
+body{display:flex;flex-direction:column;overflow:hidden}
+
+/* ── Barre de chargement ─────────────────────────────────── */
+#loadbar{position:fixed;top:0;left:0;right:0;height:3px;background:var(--accent);z-index:9999;display:none;transform-origin:left}
+#loadbar.on{display:block;animation:lb 1.4s ease infinite}
+@keyframes lb{0%{transform:scaleX(0)}60%{transform:scaleX(.75)}100%{transform:scaleX(1);opacity:0}}
+
+/* ── Écran de configuration (premier lancement) ──────────── */
+#setup{position:fixed;inset:0;background:#F4F5F7;z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px}
+#setup.hidden{display:none}
+.setup-card{background:#fff;border-radius:16px;padding:32px;width:100%;max-width:460px;box-shadow:0 8px 40px rgba(0,0,0,.1)}
+.setup-logo{width:48px;height:48px;border-radius:12px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:#fff;margin-bottom:18px}
+.setup-title{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;margin-bottom:6px}
+.setup-sub{color:var(--text2);font-size:13px;line-height:1.6;margin-bottom:20px}
+.setup-steps{background:#F8F9FA;border-radius:10px;padding:14px 16px;margin-bottom:20px}
+.step{display:flex;gap:10px;margin-bottom:10px;font-size:12px;line-height:1.5;color:var(--text2)}
+.step:last-child{margin-bottom:0}
+.step-n{width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step strong{color:var(--text)}
+.setup-label{font-size:12px;font-weight:600;color:var(--text2);margin-bottom:6px;display:block}
+.setup-input{width:100%;padding:10px 12px;border:2px solid var(--border);border-radius:8px;font-size:12px;font-family:inherit;color:var(--text);margin-bottom:10px;transition:border-color .15s}
+.setup-input:focus{outline:none;border-color:var(--accent)}
+.setup-err{color:#DC2626;font-size:12px;margin-bottom:10px;display:none}
+.setup-err.show{display:block}
+.setup-btn{width:100%;padding:11px;border-radius:8px;border:none;background:var(--accent);color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .15s}
+.setup-btn:hover{background:#1254a0}
+.setup-btn:disabled{background:#9AA0B2;cursor:not-allowed}
+.setup-info{font-size:11px;color:var(--text3);margin-top:10px;text-align:center;line-height:1.5}
+
+/* ── Header ──────────────────────────────────────────────── */
+.hdr{height:54px;background:#1C2333;color:#fff;display:flex;align-items:center;padding:0 16px;gap:12px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:50}
+.brand{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.brand-logo{width:34px;height:34px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:13px}
+.brand-name{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;letter-spacing:.4px}
+.brand-sub{font-size:10px;color:rgba(255,255,255,.45);margin-top:1px}
+.hdr-mid{flex:1;text-align:center;font-size:12px;color:rgba(255,255,255,.5)}
+.hdr-right{display:flex;align-items:center;gap:8px}
+.sync-pill{display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(255,255,255,.6)}
+.sync-dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;box-shadow:0 0 6px #4ADE80;transition:all .3s}
+.sync-dot.syncing{background:#FBBF24;box-shadow:0 0 6px #FBBF24;animation:blink 1s infinite}
+.sync-dot.err{background:#F87171;box-shadow:0 0 6px #F87171}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.ico-btn{background:rgba(255,255,255,.1);border:none;color:#fff;width:30px;height:30px;border-radius:var(--r);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:background .15s}
+.ico-btn:hover{background:rgba(255,255,255,.2)}
+
+/* ── Barre outils ────────────────────────────────────────── */
+.bar{height:48px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 12px;gap:12px;flex-shrink:0;overflow-x:auto}
+.bar::-webkit-scrollbar{display:none}
+.flt-grp{display:flex;gap:3px;flex-shrink:0}
+.flt{padding:4px 11px;border-radius:20px;border:1.5px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;transition:all .15s}
+.flt.on{background:var(--text);color:#fff;border-color:var(--text)}
+.sep{width:1px;height:22px;background:var(--border);flex-shrink:0}
+.nav-grp{display:flex;gap:3px;flex-shrink:0;margin-left:auto}
+.nav-btn{padding:4px 10px;border-radius:var(--r);border:1.5px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;font-size:12px;font-weight:600;transition:all .15s;white-space:nowrap}
+.nav-btn:hover{background:var(--bg)}
+.nav-today{background:var(--accent);color:#fff;border-color:var(--accent)}
+.nav-today:hover{background:#1254a0}
+.legend{display:flex;gap:10px;flex-shrink:0}
+.leg-item{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--text3);white-space:nowrap}
+.leg-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+
+/* ── Tableau ─────────────────────────────────────────────── */
+.tbl-wrap{flex:1;overflow:hidden}
+.tbl-scroll{width:100%;height:100%;overflow:auto;user-select:none;-webkit-user-select:none}
+.tbl-scroll::-webkit-scrollbar{width:6px;height:6px}
+.tbl-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+table{border-collapse:collapse;min-width:100%}
+.th-week{min-width:88px;width:88px;position:sticky;left:0;z-index:20;background:var(--bg);border-bottom:2px solid var(--border);border-right:2px solid var(--border)}
+.th-chef{min-width:80px;max-width:110px;width:90px;padding:5px 3px;text-align:center;border-bottom:2px solid var(--border);border-right:1px solid var(--border);border-top:4px solid #999;background:var(--surface);vertical-align:top}
+.th-chef.dim{opacity:.3}
+.th-ln{font-size:10px;font-weight:700;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.th-fn{font-size:8px;color:var(--text2);margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rw-wk{background:var(--bg)}
+.rw-wk td{padding:0;border-bottom:1px solid var(--border)}
+.wk-lbl{padding:4px 8px;font-size:10px;font-weight:700;color:var(--text2);border-right:2px solid var(--border);position:sticky;left:0;background:var(--bg);z-index:10;white-space:nowrap}
+.rw-day td{border-bottom:1px solid var(--border)}
+.day-cell{min-width:88px;width:88px;position:sticky;left:0;z-index:10;background:var(--surface);border-right:2px solid var(--border)}
+.day-cell.today{background:#EFF6FF}
+.day-inner{padding:4px 7px}
+.day-name{font-size:10px;font-weight:600;color:var(--text2)}
+.today-txt{color:var(--accent);font-weight:700}
+.hol-txt{color:#B45309}
+.day-date{font-size:9px;color:var(--text3)}
+.hol-name{font-size:8px;color:#B45309;display:block;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:72px}
+.cell{padding:1px;border-right:1px solid var(--border);cursor:pointer;vertical-align:top}
+.cell:hover .ci-empty{background:rgba(0,0,0,.04)}
+.cell.dim{opacity:.25;pointer-events:none}
+.cell.hol-bg{background:#FFFBEB}
+.cell.drag-hl .ci-empty,.cell.drag-hl .ci-filled{outline:2px solid var(--accent);outline-offset:-2px}
+.ci-empty{height:30px;border-radius:3px;transition:background .1s}
+.ci-filled{height:30px;border-radius:3px;padding:3px 4px;display:flex;flex-direction:column;justify-content:center}
+.ci-type{font-size:8px;font-weight:700;color:#fff;letter-spacing:.3px;line-height:1}
+.ci-note{font-size:7px;color:rgba(255,255,255,.85);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ── Modales ─────────────────────────────────────────────── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .2s}
+.overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--surface);border-radius:12px;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,.2);transform:translateY(12px);transition:transform .2s;overflow:hidden}
+.overlay.open .modal{transform:translateY(0)}
+.modal-hdr{padding:14px 18px 11px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.modal-title{font-size:14px;font-weight:700}
+.modal-sub{font-size:12px;color:var(--text2);margin-top:2px}
+.modal-body{padding:14px 18px}
+.modal-ftr{padding:11px 18px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end}
+.f-label{font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px}
+.f-group{margin-bottom:12px}
+.f-input{width:100%;padding:8px 10px;border:1.5px solid var(--border);border-radius:var(--r);font-size:13px;font-family:inherit;color:var(--text);transition:border-color .15s;background:var(--surface)}
+.f-input:focus{outline:none;border-color:var(--accent)}
+.radio-row{display:flex;gap:5px;flex-wrap:wrap}
+.radio-btn{padding:5px 11px;border-radius:20px;border:2px solid var(--border);background:transparent;cursor:pointer;font-size:12px;font-weight:600;color:var(--text2);transition:all .15s}
+.radio-btn.on{color:#fff}
+.type-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.type-btn{padding:7px 3px;border-radius:var(--r);border:2px solid var(--border);background:transparent;cursor:pointer;font-size:9px;font-weight:700;color:var(--text2);transition:all .15s;text-align:center}
+.type-btn.on{color:#fff}
+.day-count{font-size:11px;color:var(--text3);margin-left:6px}
+.rec-row{display:flex;gap:4px;flex-wrap:wrap}
+.rec-btn{padding:4px 9px;border-radius:20px;border:1.5px solid var(--border);background:transparent;cursor:pointer;font-size:11px;font-weight:600;color:var(--text2);transition:all .15s}
+.rec-btn.on{background:var(--text);color:#fff;border-color:var(--text)}
+.rec-extra{margin-top:7px;display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text2)}
+.btn-pri{padding:8px 15px;border-radius:var(--r);border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:13px;font-weight:600;transition:background .15s}
+.btn-pri:hover{background:#1254a0}
+.btn-sec{padding:8px 15px;border-radius:var(--r);border:1.5px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;font-size:13px;font-weight:600;transition:all .15s}
+.btn-sec:hover{background:var(--bg)}
+.btn-del{padding:8px 15px;border-radius:var(--r);border:none;background:#FEF2F2;color:#DC2626;cursor:pointer;font-size:13px;font-weight:600;margin-right:auto;transition:all .15s}
+.btn-del:hover{background:#FEE2E2}
+.close-btn{background:none;border:none;cursor:pointer;color:var(--text3);font-size:20px;line-height:1;padding:2px}
+.close-btn:hover{color:var(--text)}
+.conflict-item{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);font-size:12px}
+.conflict-item:last-child{border-bottom:none}
+.c-badge{padding:2px 7px;border-radius:3px;font-size:9px;font-weight:700;color:#fff;flex-shrink:0}
+.settings-modal{max-width:500px;max-height:80vh;display:flex;flex-direction:column}
+.settings-body{flex:1;overflow-y:auto;padding:14px 18px}
+.s-section{margin-bottom:18px}
+.s-title{font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.7px;margin-bottom:9px}
+.s-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.chefs-grid{display:grid;grid-template-columns:1fr auto;gap:3px}
+.chef-row{display:contents}
+select{padding:6px 7px;border:1.5px solid var(--border);border-radius:var(--r);font-size:12px;font-family:inherit;color:var(--text);background:var(--surface);cursor:pointer}
+select:focus{outline:none;border-color:var(--accent)}
+input[type=color]{width:34px;height:34px;border:1.5px solid var(--border);border-radius:var(--r);cursor:pointer;padding:2px;background:var(--surface)}
+
+/* ── Toast ───────────────────────────────────────────────── */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:#1C2333;color:#fff;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:500;opacity:0;transition:all .25s;z-index:999;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media print{
+  .hdr,.bar,#setup,.overlay,.toast{display:none!important}
+  .tbl-wrap,.tbl-scroll{overflow:visible!important;height:auto!important}
+  body{overflow:visible!important;height:auto!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ ÉCRAN DE CONFIGURATION (premier lancement) ══════════ -->
+<div id="setup">
+  <div class="setup-card">
+    <div class="setup-logo">CB</div>
+    <div class="setup-title">CHOK BÉTON — Planning</div>
+    <div class="setup-sub">Collez l'URL de votre Google Apps Script pour connecter le planning à votre Google Sheet.</div>
+    <div class="setup-steps">
+      <div class="step"><div class="step-n">1</div><div>Ouvrez <strong>script.google.com</strong> → votre projet CHOK BÉTON</div></div>
+      <div class="step"><div class="step-n">2</div><div>Déployez → <strong>Application Web</strong> → Accès : <strong>Tout le monde</strong></div></div>
+      <div class="step"><div class="step-n">3</div><div>Copiez l'URL du déploiement et collez-la ci-dessous</div></div>
+    </div>
+    <label class="setup-label">URL Google Apps Script</label>
+    <input id="setup-url" class="setup-input" type="url" placeholder="https://script.google.com/macros/s/…/exec" autocomplete="off" spellcheck="false"/>
+    <div id="setup-err" class="setup-err"></div>
+    <button class="setup-btn" id="setup-btn" onclick="connectGAS()">Connecter le planning</button>
+    <div class="setup-info">L'URL est mémorisée sur cet appareil.<br>Modifiable dans ⚙ Paramètres si vous redeployez.</div>
+  </div>
+</div>
+
+<div id="loadbar"></div>
+
+<!-- ══ APPLICATION ═════════════════════════════════════════ -->
+<header class="hdr">
+  <div class="brand">
+    <div class="brand-logo">CB</div>
+    <div><div class="brand-name">CHOK BÉTON</div><div class="brand-sub">Planning d'équipe</div></div>
+  </div>
+  <div class="hdr-mid" id="weekRange"></div>
+  <div class="hdr-right">
+    <div class="sync-pill"><div class="sync-dot" id="syncDot"></div><span id="syncText">—</span></div>
+    <button class="ico-btn" title="Imprimer" onclick="window.print()">🖨</button>
+    <button class="ico-btn" title="Paramètres" onclick="openSettings()">⚙</button>
+  </div>
+</header>
+
+<div class="bar">
+  <div class="flt-grp">
+    <button class="flt on" data-dir="ALL" onclick="setFilter('ALL',this)">Tous</button>
+    <button class="flt" id="fD1" onclick="setFilter('D1',this)">D1</button>
+    <button class="flt" id="fD2" onclick="setFilter('D2',this)">D2</button>
+    <button class="flt" id="fD3" onclick="setFilter('D3',this)">D3</button>
+  </div>
+  <div class="sep"></div>
+  <div class="legend">
+    <div class="leg-item"><div class="leg-dot" id="lD1" style="background:#1565C0"></div><span id="lD1n">Christian</span></div>
+    <div class="leg-item"><div class="leg-dot" id="lD2" style="background:#2E7D32"></div><span id="lD2n">Ghislain</span></div>
+    <div class="leg-item"><div class="leg-dot" id="lD3" style="background:#C62828"></div><span id="lD3n">Christopher</span></div>
+    <div class="leg-item"><div class="leg-dot" style="background:#DC2626"></div><span>Absent</span></div>
+    <div class="leg-item"><div class="leg-dot" style="background:#7C3AED"></div><span>Formation</span></div>
+    <div class="leg-item"><div class="leg-dot" style="background:#0891B2"></div><span>Congés</span></div>
+    <div class="leg-item"><div class="leg-dot" style="background:#6B7280"></div><span>Férié</span></div>
+  </div>
+  <div class="nav-grp">
+    <button class="nav-btn" onclick="shift(-1)">◀ Préc.</button>
+    <button class="nav-btn nav-today" onclick="goToday()">Aujourd'hui</button>
+    <button class="nav-btn" onclick="shift(1)">Suiv. ▶</button>
+  </div>
+</div>
+
+<div class="tbl-wrap">
+  <div class="tbl-scroll">
+    <table><thead id="thead"></thead><tbody id="tbody"></tbody></table>
+  </div>
+</div>
+
+<!-- Modal saisie -->
+<div class="overlay" id="entryOverlay">
+  <div class="modal">
+    <div class="modal-hdr">
+      <div><div class="modal-title" id="mChef">—</div><div class="modal-sub"><span id="mStart">—</span><span id="mDayCount" class="day-count"></span></div></div>
+      <button class="close-btn" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="f-group"><div class="f-label">Fin de période</div>
+        <input type="date" class="f-input" id="mEndDate" oninput="onEndChange()"/>
+      </div>
+      <div class="f-group"><div class="f-label">Directeur</div><div class="radio-row" id="mDirRow"></div></div>
+      <div class="f-group"><div class="f-label">Type</div><div class="type-grid" id="mTypeGrid"></div></div>
+      <div class="f-group"><div class="f-label">Note (optionnel)</div>
+        <input type="text" class="f-input" id="mNote" placeholder="Nom du chantier, raison…" maxlength="60"/>
+      </div>
+      <div class="f-group"><div class="f-label">Récurrence</div>
+        <div class="rec-row">
+          <button class="rec-btn on" data-rec="none" onclick="setRec('none',this)">Aucune</button>
+          <button class="rec-btn" data-rec="weekly" onclick="setRec('weekly',this)">Hebdo.</button>
+          <button class="rec-btn" data-rec="until" onclick="setRec('until',this)">Jusqu'au…</button>
+        </div>
+        <div id="recWkOpts" class="rec-extra" style="display:none">
+          Répéter <input type="number" id="recWeeks" value="4" min="1" max="52" style="width:52px;padding:4px 6px;border:1.5px solid var(--border);border-radius:4px;font-size:12px"> semaines
+        </div>
+        <div id="recUntilOpts" style="display:none;margin-top:7px">
+          <input type="date" class="f-input" id="recUntilDate"/>
+        </div>
+      </div>
+    </div>
+    <div class="modal-ftr">
+      <button class="btn-del" onclick="clearCell()">✕ Effacer</button>
+      <button class="btn-sec" onclick="closeModal()">Annuler</button>
+      <button class="btn-pri" onclick="saveCell()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal conflit -->
+<div class="overlay" id="conflictOverlay">
+  <div class="modal">
+    <div class="modal-hdr">
+      <div><div class="modal-title">⚠ Conflits détectés</div><div class="modal-sub" id="conflictSub"></div></div>
+      <button class="close-btn" onclick="cancelConflict()">×</button>
+    </div>
+    <div class="modal-body" id="conflictList"></div>
+    <div class="modal-ftr">
+      <button class="btn-sec" onclick="cancelConflict()">Annuler</button>
+      <button class="btn-pri" style="background:#D97706" onclick="confirmConflict()">Écraser quand même</button>
+    </div>
+  </div>
+</div>
+
+<!-- Paramètres -->
+<div class="overlay" id="settingsOverlay">
+  <div class="modal settings-modal">
+    <div class="modal-hdr"><div class="modal-title">⚙ Paramètres</div><button class="close-btn" onclick="closeSettings()">×</button></div>
+    <div class="settings-body" id="settingsBody"></div>
+    <div class="modal-ftr">
+      <button class="btn-del" onclick="resetAll()">⚠ Tout réinitialiser</button>
+      <button class="btn-sec" onclick="closeSettings()">Annuler</button>
+      <button class="btn-pri" onclick="saveSettings()">Sauvegarder</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════════════════
+//  CHOK BÉTON — Planning d'équipe
+//  Hébergé sur GitHub Pages · API : Google Apps Script
+//  Fonctionne sur Chrome, Safari, Firefox, Edge, iOS, Android
+// ══════════════════════════════════════════════════════════
+
+const VISIBLE_WEEKS = 5
+const DAYS       = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi']
+const DAYS_SHORT = ['Lun','Mar','Mer','Jeu','Ven','Sam']
+const TYPES = [
+  {v:'CHANTIER', label:'Chantier',  color:'director'},
+  {v:'ABSENT',   label:'Absent',    color:'#DC2626'},
+  {v:'FERIE',    label:'Férié',     color:'#6B7280'},
+  {v:'FORMATION',label:'Formation', color:'#7C3AED'},
+  {v:'CONGES',   label:'Congés',    color:'#0891B2'},
+]
+const DEFAULT_DIRS = [
+  {id:'D1',name:'Christian',  color:'#1565C0'},
+  {id:'D2',name:'Ghislain',   color:'#2E7D32'},
+  {id:'D3',name:'Christopher',color:'#C62828'},
+]
+
+let S = {cells:{}, chefs:[], dirs:[], sw:0, filter:'ALL', gasUrl:''}
+
+// ── Configuration au démarrage ────────────────────────────
+function initApp(){
+  const saved = localStorage.getItem('chok_gas_url') || ''
+  if(!saved){
+    document.getElementById('setup').classList.remove('hidden')
+    document.getElementById('setup-url').focus()
+  } else {
+    S.gasUrl = saved
+    document.getElementById('setup').classList.add('hidden')
+    loadAll()
+  }
+}
+
+function cleanUrl(raw){
+  return raw.trim()
+    .replace(/\/macros\/u\/\d+\/s\//,'/macros/s/')
+    .replace(/\/\d+\/exec$/,'/exec')
+    .split('?')[0]
+}
+
+function connectGAS(){
+  const raw = document.getElementById('setup-url').value
+  const url = cleanUrl(raw)
+  const err = document.getElementById('setup-err')
+  const btn = document.getElementById('setup-btn')
+  if(!url.startsWith('https://script.google.com/macros/s/')){
+    err.textContent = 'URL invalide. Elle doit commencer par https://script.google.com/macros/s/'
+    err.classList.add('show'); return
+  }
+  err.classList.remove('show')
+  btn.disabled = true; btn.textContent = 'Connexion…'
+  S.gasUrl = url
+  gasCall('load').then(d=>{
+    localStorage.setItem('chok_gas_url', url)
+    document.getElementById('setup').classList.add('hidden')
+    applyData(d)
+    setInterval(silentRefresh, 60000)
+    btn.disabled=false; btn.textContent='Connecter le planning'
+  }).catch(()=>{
+    btn.disabled=false; btn.textContent='Connecter le planning'
+    err.textContent='Connexion échouée. Vérifiez que le déploiement est bien "Tout le monde" et réessayez.'
+    err.classList.add('show')
+  })
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const inp = document.getElementById('setup-url')
+  if(inp) inp.addEventListener('keydown', e=>{ if(e.key==='Enter') connectGAS() })
+})
+
+// ── API : fetch() en priorité, JSONP en secours ───────────
+// fetch() fonctionne depuis GitHub Pages (CORS autorisé par GAS public)
+// JSONP prend le relais si fetch() est bloqué
+async function gasCall(action, data){
+  const qs = '?action='+action+(data?'&data='+encodeURIComponent(JSON.stringify(data)):'')
+  const url = S.gasUrl + qs
+
+  // Tentative 1 : fetch()
+  try {
+    const ctrl = new AbortController()
+    const tid  = setTimeout(()=>ctrl.abort(), 20000)
+    const r    = await fetch(url, {signal:ctrl.signal, redirect:'follow'})
+    clearTimeout(tid)
+    if(!r.ok) throw new Error('HTTP '+r.status)
+    const text = await r.text()
+    const m = text.match(/^[^(]*\((.+)\)\s*;?\s*$/)
+    return JSON.parse(m ? m[1] : text)
+  } catch(e){
+    if(e.name==='AbortError') throw new Error('Timeout')
+    // fetch() échoué → on tente JSONP
+  }
+
+  // Tentative 2 : JSONP (secours universel)
+  return new Promise((resolve, reject)=>{
+    const cb  = '_cb'+Date.now()+Math.random().toString(36).slice(2)
+    const s   = document.createElement('script')
+    const tid = setTimeout(()=>{ cleanup(); reject(new Error('Timeout')) }, 25000)
+    const cleanup = ()=>{ delete window[cb]; s.parentNode&&s.parentNode.removeChild(s) }
+    window[cb] = r=>{ clearTimeout(tid); cleanup(); resolve(r) }
+    s.onerror  = ()=>{ clearTimeout(tid); cleanup(); reject(new Error('Connexion refusée')) }
+    document.head.appendChild(s)
+    s.src = url+'&callback='+cb
+  })
+}
+
+// ── Sync UI ───────────────────────────────────────────────
+function setSync(state){
+  const dot=document.getElementById('syncDot'), txt=document.getElementById('syncText'), bar=document.getElementById('loadbar')
+  dot.className='sync-dot'+(state!=='ok'?' '+state:'')
+  txt.textContent=state==='syncing'?'Sync…':state==='err'?'Erreur':'✓ Synchro'
+  bar.classList.toggle('on',state==='syncing')
+}
+
+// ── Chargement ────────────────────────────────────────────
+async function loadAll(){
+  setSync('syncing')
+  try {
+    const d = await gasCall('load')
+    applyData(d)
+    setInterval(silentRefresh, 60000)
+  } catch(e){
+    setSync('err')
+    toast('⚠ Erreur de chargement. Vérifiez votre connexion.', true)
+    S.dirs=[...DEFAULT_DIRS]; S.chefs=[]; render()
+  }
+}
+
+function applyData(d){
+  S.cells = d.cells || {}
+  S.chefs = (d.chefs||[]).map(c=>({name:c.name, directorId:c.directorId||'D1'}))
+  S.dirs  = (d.config&&d.config.directors)||DEFAULT_DIRS
+  setSync('ok'); render()
+}
+
+async function silentRefresh(){
+  try { const d=await gasCall('load'); S.cells=d.cells||{}; renderTable() } catch(e){}
+}
+
+// ── Date utils ────────────────────────────────────────────
+function monday(off=0){
+  const n=new Date(),day=n.getDay(),diff=day===0?-6:1-day
+  n.setHours(0,0,0,0); n.setDate(n.getDate()+diff+off*7); return n
+}
+function addDays(d,n){const r=new Date(d);r.setDate(r.getDate()+n);return r}
+function fmt(d){return d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'})}
+function isoDate(d){return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`}
+function parseIso(s){const[y,m,d]=s.split('-').map(Number);const dt=new Date(y,m-1,d);dt.setHours(0,0,0,0);return dt}
+function p(n){return String(n).padStart(2,'0')}
+function weekNum(d){
+  const t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()))
+  t.setUTCDate(t.getUTCDate()+4-(t.getUTCDay()||7))
+  return Math.ceil(((t-new Date(Date.UTC(t.getUTCFullYear(),0,1)))/86400000+1)/7)
+}
+function absWkIdx(off){const m=monday(off);return `${m.getFullYear()}${p(weekNum(m))}`}
+function absWkToMonday(idx){
+  const y=parseInt(idx.slice(0,4)),w=parseInt(idx.slice(4)),j4=new Date(y,0,4),s=new Date(j4)
+  s.setDate(j4.getDate()-(j4.getDay()||7)+1)
+  const r=new Date(s);r.setDate(s.getDate()+(w-1)*7);return r
+}
+function dateToAbsWk(d){return `${d.getFullYear()}${p(weekNum(d))}`}
+function dayIdx(d){const day=d.getDay();return day===0?6:day-1}
+
+// ── Jours fériés ──────────────────────────────────────────
+function easter(y){
+  const a=y%19,b=Math.floor(y/100),c=y%100,d=Math.floor(b/4),e=b%4
+  const f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3)
+  const h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4
+  const l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451)
+  return new Date(y,Math.floor((h+l-7*m+114)/31)-1,((h+l-7*m+114)%31)+1)
+}
+const HC={}
+function holidays(y){
+  if(HC[y])return HC[y]
+  const e=easter(y),ad=(d,n)=>{const r=new Date(d);r.setDate(r.getDate()+n);return r}
+  HC[y]={
+    [`${y}-01-01`]:"Jour de l'An",[isoDate(ad(e,1))]:"Lundi de Pâques",
+    [`${y}-05-01`]:"Fête du Travail",[`${y}-05-08`]:"Victoire 1945",
+    [isoDate(ad(e,39))]:"Ascension",[isoDate(ad(e,50))]:"Lundi de Pentecôte",
+    [`${y}-07-14`]:"Fête Nationale",[`${y}-08-15`]:"Assomption",
+    [`${y}-11-01`]:"Toussaint",[`${y}-11-11`]:"Armistice",[`${y}-12-25`]:"Noël"
+  }
+  return HC[y]
+}
+function getHoliday(d){return holidays(d.getFullYear())[isoDate(d)]||null}
+
+// ── Cell key ──────────────────────────────────────────────
+function ck(w,d,c){return `w${w}_d${d}_c${c}`}
+function dirColor(id){const d=S.dirs.find(x=>x.id===id);return d?d.color:'#6B7280'}
+
+// ── Render ────────────────────────────────────────────────
+function render(){renderFilters();renderTable();updateHeader()}
+
+function updateHeader(){
+  const m0=monday(S.sw),m4=monday(S.sw+VISIBLE_WEEKS-1),end=addDays(m4,5)
+  const el=document.getElementById('weekRange')
+  if(el)el.textContent=`S${weekNum(m0)} – S${weekNum(m4)}  ·  ${fmt(m0)} au ${fmt(end)}`
+}
+
+function renderFilters(){
+  S.dirs.forEach((d,i)=>{
+    const btn=document.getElementById(`fD${i+1}`),ldot=document.getElementById(`lD${i+1}`),lname=document.getElementById(`lD${i+1}n`)
+    if(btn){btn.textContent=d.name;btn.style.background=S.filter===d.id?d.color:'';btn.style.borderColor=S.filter===d.id?d.color:'';btn.style.color=S.filter===d.id?'#fff':'';btn.classList.toggle('on',S.filter===d.id)}
+    if(ldot)ldot.style.background=d.color
+    if(lname)lname.textContent=d.name
+  })
+  document.querySelector('[data-dir="ALL"]')?.classList.toggle('on',S.filter==='ALL')
+}
+
+function renderTable(){
+  const thead=document.getElementById('thead'),tbody=document.getElementById('tbody')
+  const todayIso=isoDate(new Date())
+
+  let th=`<tr><th class="th-week"></th>`
+  S.chefs.forEach((chef,ci)=>{
+    const dir=S.dirs.find(d=>d.id===chef.directorId)||S.dirs[0]
+    const dim=S.filter!=='ALL'&&chef.directorId!==S.filter
+    const parts=chef.name.split(' '),last=parts[0],first=parts.slice(1).join(' ')
+    th+=`<th class="th-chef${dim?' dim':''}" style="border-top-color:${dir?dir.color:'#999'}">
+      <div class="th-ln" title="${chef.name}">${last}</div>
+      <div class="th-fn" title="${chef.name}">${first}</div>
+    </th>`
+  })
+  th+='</tr>'; thead.innerHTML=th
+
+  let html=''
+  for(let wi=0;wi<VISIBLE_WEEKS;wi++){
+    const off=S.sw+wi,mon=monday(off),wn=weekNum(mon),wIdx=absWkIdx(off),end=addDays(mon,5)
+    html+=`<tr class="rw-wk"><td class="wk-lbl">S${wn} · ${fmt(mon)}–${fmt(end)}</td><td colspan="${S.chefs.length}"></td></tr>`
+    DAYS.forEach((dn,di)=>{
+      const date=addDays(mon,di),iso=isoDate(date),hol=getHoliday(date),isToday=iso===todayIso
+      html+=`<tr class="rw-day"><td class="day-cell${isToday?' today':''}"><div class="day-inner">
+        <div class="day-name${isToday?' today-txt':hol?' hol-txt':''}">${DAYS_SHORT[di]}</div>
+        <div class="day-date">${fmt(date)}</div>
+        ${hol?`<span class="hol-name">${hol}</span>`:''}
+      </div></td>`
+      S.chefs.forEach((chef,ci)=>{
+        const key=ck(wIdx,di,ci),cell=S.cells[key]
+        const dim=S.filter!=='ALL'&&chef.directorId!==S.filter
+        const eType=(!cell||!cell.type)&&hol?'FERIE_AUTO':(cell?cell.type:'')
+        const eNote=(!cell||!cell.type)&&hol?hol:(cell?cell.note:'')
+        let bg='#6B7280'
+        if(eType==='CHANTIER')       bg=dirColor(cell?.directorId||chef.directorId)
+        else if(eType==='ABSENT')    bg='#DC2626'
+        else if(eType==='CONGES')    bg='#0891B2'
+        else if(eType==='FORMATION') bg='#7C3AED'
+        else if(eType==='FERIE_AUTO')bg='#D97706'
+        html+=`<td class="cell${dim?' dim':''}${hol?' hol-bg':''}" data-w="${wIdx}" data-d="${di}" data-c="${ci}"
+          ${dim?'':' onmousedown="startDrag(event)" onmouseover="extDrag(event)" onclick="onCellClick(event)"'}>
+          ${eType
+            ?`<div class="ci-filled" style="background:${bg}"><div class="ci-type">${eType==='FERIE_AUTO'?'FÉRIÉ':eType}</div>${eNote?`<div class="ci-note">${eNote}</div>`:''}</div>`
+            :`<div class="ci-empty"></div>`}
+        </td>`
+      })
+      html+='</tr>'
+    })
+  }
+  tbody.innerHTML=html
+}
+
+// ── Drag ──────────────────────────────────────────────────
+let DG={on:false,ci:null,s:null,e:null,moved:false}
+function cellDate(td){const m=absWkToMonday(td.dataset.w),d=addDays(m,+td.dataset.d);d.setHours(0,0,0,0);return d}
+function startDrag(ev){ev.preventDefault();const td=ev.currentTarget;DG={on:true,ci:+td.dataset.c,s:cellDate(td),e:cellDate(td),moved:false};hlDrag()}
+function extDrag(ev){if(!DG.on)return;const td=ev.currentTarget;if(+td.dataset.c!==DG.ci)return;const d=cellDate(td);if(d.getTime()!==DG.e.getTime())DG.moved=true;DG.e=d;hlDrag()}
+function onCellClick(ev){if(!DG.moved){const td=ev.currentTarget;openModal(+td.dataset.c,DG.s,DG.e)}}
+function hlDrag(){
+  const s=new Date(Math.min(DG.s,DG.e)),e=new Date(Math.max(DG.s,DG.e))
+  document.querySelectorAll('.cell').forEach(td=>{
+    td.classList.remove('drag-hl')
+    if(+td.dataset.c!==DG.ci)return
+    const d=cellDate(td);if(d>=s&&d<=e)td.classList.add('drag-hl')
+  })
+}
+function clearDrag(){document.querySelectorAll('.cell.drag-hl').forEach(td=>td.classList.remove('drag-hl'))}
+document.addEventListener('mouseup',()=>{if(!DG.on)return;const m=DG.moved;DG.on=false;clearDrag();if(m)openModal(DG.ci,DG.s,DG.e)})
+document.addEventListener('mouseleave',()=>{if(DG.on){DG.on=false;clearDrag()}})
+
+// ── Modal ─────────────────────────────────────────────────
+let MS={ci:null,s:null,e:null,type:'',dir:'D1',note:'',rec:'none'}
+function openModal(ci,startDate,endDate){
+  const chef=S.chefs[ci]
+  const s=new Date(Math.min(startDate,endDate));s.setHours(0,0,0,0)
+  const e=new Date(Math.max(startDate,endDate));e.setHours(0,0,0,0)
+  const key=ck(dateToAbsWk(s),dayIdx(s),ci),cell=S.cells[key]
+  MS={ci,s,e,type:cell?.type||'',dir:cell?.directorId||chef?.directorId||'D1',note:cell?.note||'',rec:'none'}
+  document.getElementById('mChef').textContent=chef?.name||'—'
+  document.getElementById('mStart').textContent=`Du ${fmt(s)} au`
+  document.getElementById('mEndDate').value=isoDate(e)
+  onEndChange()
+  document.getElementById('mDirRow').innerHTML=S.dirs.map(d=>
+    `<button class="radio-btn${MS.dir===d.id?' on':''}" style="${MS.dir===d.id?`background:${d.color};border-color:${d.color}`:`border-color:${d.color}`}" onclick="selDir('${d.id}',this,'${d.color}')">${d.name}</button>`
+  ).join('')
+  document.getElementById('mTypeGrid').innerHTML=TYPES.map(t=>{
+    const bg=t.color==='director'?dirColor(MS.dir):t.color,on=MS.type===t.v
+    return `<button class="type-btn${on?' on':''}" data-v="${t.v}" style="${on?`background:${bg};border-color:${bg}`:t.v==='CHANTIER'?`border-color:${bg}`:''}" onclick="selType('${t.v}',this,'${bg}')">${t.label}</button>`
+  }).join('')
+  document.getElementById('mNote').value=MS.note
+  document.querySelectorAll('.rec-btn').forEach(b=>b.classList.toggle('on',b.dataset.rec==='none'))
+  document.getElementById('recWkOpts').style.display='none'
+  document.getElementById('recUntilOpts').style.display='none'
+  document.getElementById('entryOverlay').classList.add('open')
+}
+function onEndChange(){
+  const v=document.getElementById('mEndDate').value;if(!v||!MS.s)return
+  MS.e=parseIso(v)
+  const diff=Math.round((MS.e-MS.s)/86400000)+1
+  document.getElementById('mDayCount').textContent=diff>1?`(${diff} jours)`:''
+}
+function selDir(id,btn,color){
+  MS.dir=id
+  document.querySelectorAll('#mDirRow .radio-btn').forEach(b=>{b.classList.remove('on');b.style.background='';b.style.borderColor=''})
+  btn.classList.add('on');btn.style.background=color;btn.style.borderColor=color
+  const cb=document.querySelector('#mTypeGrid .type-btn[data-v="CHANTIER"]')
+  if(cb){cb.style.borderColor=color;if(cb.classList.contains('on'))cb.style.background=color}
+}
+function selType(v,btn,color){
+  const ec=v==='CHANTIER'?dirColor(MS.dir):color;MS.type=v
+  document.querySelectorAll('#mTypeGrid .type-btn').forEach(b=>{
+    b.classList.remove('on');b.style.background=''
+    b.dataset.v==='CHANTIER'?b.style.borderColor=dirColor(MS.dir):b.style.borderColor=''
+  })
+  btn.classList.add('on');btn.style.background=ec;btn.style.borderColor=ec
+}
+function setRec(type,btn){
+  document.querySelectorAll('.rec-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');MS.rec=type
+  document.getElementById('recWkOpts').style.display=type==='weekly'?'flex':'none'
+  document.getElementById('recUntilOpts').style.display=type==='until'?'block':'none'
+}
+function closeModal(){document.getElementById('entryOverlay').classList.remove('open')}
+function closeSettings(){document.getElementById('settingsOverlay').classList.remove('open')}
+function clearCell(){MS.type='';doSave(buildDates(),'')}
+
+function saveCell(){
+  const note=document.getElementById('mNote').value.trim()
+  const ev=document.getElementById('mEndDate').value;if(ev)MS.e=parseIso(ev)
+  const s=new Date(Math.min(MS.s,MS.e));s.setHours(0,0,0,0)
+  const e=new Date(Math.max(MS.s,MS.e));e.setHours(0,0,0,0)
+  MS.s=s;MS.e=e
+  const dates=buildDates()
+  if(!MS.type){doSave(dates,note);return}
+  checkConflicts(dates,note)
+}
+
+function buildDates(){
+  const dates=[],cur=new Date(MS.s)
+  while(cur<=MS.e){if(cur.getDay()!==0)dates.push(new Date(cur));cur.setDate(cur.getDate()+1)}
+  if(MS.rec==='weekly'){
+    const w=Math.max(1,parseInt(document.getElementById('recWeeks')?.value)||4),span=MS.e-MS.s
+    for(let i=1;i<w;i++){const rs=new Date(MS.s.getTime()+i*7*86400000),re=new Date(rs.getTime()+span),c=new Date(rs);while(c<=re){if(c.getDay()!==0)dates.push(new Date(c));c.setDate(c.getDate()+1)}}
+  } else if(MS.rec==='until'){
+    const str=document.getElementById('recUntilDate')?.value
+    if(str){const until=parseIso(str),span=MS.e-MS.s;let rs=new Date(MS.s.getTime()+7*86400000);while(rs<=until){const re=new Date(Math.min(rs.getTime()+span,until.getTime())),c=new Date(rs);while(c<=re){if(c.getDay()!==0)dates.push(new Date(c));c.setDate(c.getDate()+1)}rs=new Date(rs.getTime()+7*86400000)}}
+  }
+  return dates
+}
+
+// ── Conflits ──────────────────────────────────────────────
+let _pending=null
+function checkConflicts(dates,note){
+  const conflicts=dates.filter(d=>{const c=S.cells[ck(dateToAbsWk(d),dayIdx(d),MS.ci)];return c&&c.type&&(c.type!==MS.type||c.note!==note)})
+  if(!conflicts.length){doSave(dates,note);return}
+  _pending={dates,note}
+  document.getElementById('conflictSub').textContent=`${conflicts.length} conflit${conflicts.length>1?'s':''} — ${S.chefs[MS.ci]?.name}`
+  document.getElementById('conflictList').innerHTML=conflicts.map(d=>{
+    const c=S.cells[ck(dateToAbsWk(d),dayIdx(d),MS.ci)]
+    const bg=c.type==='CHANTIER'?dirColor(c.directorId):(TYPES.find(x=>x.v===c.type)?.color||'#6B7280')
+    return `<div class="conflict-item"><span style="color:var(--text2);min-width:70px">${DAYS[dayIdx(d)]} ${fmt(d)}</span><span class="c-badge" style="background:${bg}">${c.type}</span>${c.note?`<span style="color:var(--text3);font-size:11px">${c.note}</span>`:''}</div>`
+  }).join('')
+  document.getElementById('conflictOverlay').classList.add('open')
+}
+function cancelConflict(){document.getElementById('conflictOverlay').classList.remove('open');_pending=null}
+function confirmConflict(){document.getElementById('conflictOverlay').classList.remove('open');if(_pending){doSave(_pending.dates,_pending.note);_pending=null}}
+
+// ── Sauvegarde ────────────────────────────────────────────
+async function doSave(dates,note){
+  const entries=dates.map(d=>({key:ck(dateToAbsWk(d),dayIdx(d),MS.ci),type:MS.type||'',note,directorId:MS.dir}))
+  entries.forEach(({key,type,note,directorId})=>{
+    if(type)S.cells[key]={type,note,directorId,modifiedAt:new Date().toISOString()}
+    else delete S.cells[key]
+  })
+  renderTable();closeModal();setSync('syncing')
+  const savedType=MS.type,cnt=dates.length
+  try {
+    await gasCall('save',entries);setSync('ok')
+    toast(savedType?`✓ ${cnt} jour${cnt>1?'s':''} enregistré${cnt>1?'s':''}`:'✓ Effacé')
+  } catch(e){setSync('err');toast('⚠ Erreur sauvegarde',true)}
+}
+
+// ── Paramètres ────────────────────────────────────────────
+function openSettings(){
+  const currentUrl=localStorage.getItem('chok_gas_url')||''
+  document.getElementById('settingsBody').innerHTML=`
+    <div class="s-section">
+      <div class="s-title">URL Apps Script</div>
+      <div class="s-row"><input type="text" class="f-input" id="cfg_url" value="${currentUrl}" style="font-size:11px;flex:1"></div>
+      <div style="font-size:11px;color:var(--text3)">Modifiez si vous avez redeployé Apps Script.</div>
+    </div>
+    <div class="s-section">
+      <div class="s-title">Directeurs</div>
+      ${S.dirs.map(d=>`<div class="s-row"><input type="color" id="cfg_color_${d.id}" value="${d.color}"><input type="text" class="f-input" id="cfg_name_${d.id}" value="${d.name}" style="flex:1"></div>`).join('')}
+    </div>
+    <div class="s-section">
+      <div class="s-title">Chefs d'équipe (${S.chefs.length})</div>
+      <div class="chefs-grid">
+        ${S.chefs.map((c,i)=>`<div class="chef-row">
+          <input type="text" class="f-input" id="cn_${i}" value="${c.name}" style="font-size:12px;padding:5px 7px">
+          <select id="cd_${i}">${S.dirs.map(d=>`<option value="${d.id}"${c.directorId===d.id?' selected':''}>${d.name}</option>`).join('')}</select>
+        </div>`).join('')}
+      </div>
+    </div>`
+  document.getElementById('settingsOverlay').classList.add('open')
+}
+
+async function saveSettings(){
+  const newUrl=cleanUrl(document.getElementById('cfg_url')?.value||'')
+  if(newUrl&&newUrl!==S.gasUrl){localStorage.setItem('chok_gas_url',newUrl);S.gasUrl=newUrl}
+  const nd=S.dirs.map(d=>({...d,name:document.getElementById(`cfg_name_${d.id}`)?.value||d.name,color:document.getElementById(`cfg_color_${d.id}`)?.value||d.color}))
+  const nc=S.chefs.map((c,i)=>({...c,name:document.getElementById(`cn_${i}`)?.value||c.name,directorId:document.getElementById(`cd_${i}`)?.value||c.directorId}))
+  S.dirs=nd;S.chefs=nc;closeSettings();render();setSync('syncing')
+  try{await gasCall('saveConfig',{directors:nd,chefs:nc});setSync('ok');toast('✓ Configuration sauvegardée')}
+  catch(e){setSync('err');toast('⚠ Erreur configuration',true)}
+}
+
+async function resetAll(){
+  if(!confirm('Réinitialiser TOUTES les données du planning ?\nCette action est irréversible.'))return
+  setSync('syncing')
+  try{await gasCall('reset');setSync('ok');loadAll();toast('✓ Planning réinitialisé')}
+  catch(e){setSync('err');toast('⚠ Erreur reset',true)}
+}
+
+// ── Navigation ────────────────────────────────────────────
+function shift(n){S.sw+=n;render()}
+function goToday(){S.sw=0;render()}
+function setFilter(dir,btn){S.filter=dir;document.querySelectorAll('.flt').forEach(b=>b.classList.remove('on'));btn.classList.add('on');render()}
+
+// ── Toast ─────────────────────────────────────────────────
+function toast(msg,isErr=false){
+  const t=document.getElementById('toast');t.textContent=msg
+  t.style.background=isErr?'#DC2626':'#1C2333';t.classList.add('show')
+  setTimeout(()=>t.classList.remove('show'),2800)
+}
+
+window.onload=initApp
+</script>
+</body>
+</html>
