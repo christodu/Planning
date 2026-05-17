@@ -323,19 +323,14 @@ const DEFAULT_DIRS = [
   {id:'D3',name:'Christopher',color:'#C62828'},
 ]
 
-let S = {cells:{}, chefs:[], dirs:[], sw:0, filter:'ALL', gasUrl:''}
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbz4ODXO9a5G0ongtDPwyE-Iqr_A7KvUuT6x_zr_0oE/exec'
+
+let S = {cells:{}, chefs:[], dirs:[], sw:0, filter:'ALL', gasUrl: GAS_URL}
 
 // ── Configuration au démarrage ────────────────────────────
 function initApp(){
-  const saved = localStorage.getItem('chok_gas_url') || ''
-  if(!saved){
-    document.getElementById('setup').classList.remove('hidden')
-    document.getElementById('setup-url').focus()
-  } else {
-    S.gasUrl = saved
-    document.getElementById('setup').classList.add('hidden')
-    loadAll()
-  }
+  document.getElementById('setup').classList.add('hidden')
+  loadAll()
 }
 
 function cleanUrl(raw){
