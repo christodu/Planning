@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-<title>CHOK BÉTON — Planning</title>
+<title>CHOK BÃTON â Planning</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -15,12 +15,12 @@
 html,body{height:100%;font-family:'DM Sans',sans-serif;font-size:14px;background:var(--bg);color:var(--text)}
 body{display:flex;flex-direction:column;overflow:hidden}
 
-/* ── Barre de chargement ─────────────────────────────────── */
+/* ââ Barre de chargement âââââââââââââââââââââââââââââââââââ */
 #loadbar{position:fixed;top:0;left:0;right:0;height:3px;background:var(--accent);z-index:9999;display:none;transform-origin:left}
 #loadbar.on{display:block;animation:lb 1.4s ease infinite}
 @keyframes lb{0%{transform:scaleX(0)}60%{transform:scaleX(.75)}100%{transform:scaleX(1);opacity:0}}
 
-/* ── Écran de configuration (premier lancement) ──────────── */
+/* ââ Ãcran de configuration (premier lancement) ââââââââââââ */
 #setup{position:fixed;inset:0;background:#F4F5F7;z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px}
 #setup.hidden{display:none}
 .setup-card{background:#fff;border-radius:16px;padding:32px;width:100%;max-width:460px;box-shadow:0 8px 40px rgba(0,0,0,.1)}
@@ -42,7 +42,7 @@ body{display:flex;flex-direction:column;overflow:hidden}
 .setup-btn:disabled{background:#9AA0B2;cursor:not-allowed}
 .setup-info{font-size:11px;color:var(--text3);margin-top:10px;text-align:center;line-height:1.5}
 
-/* ── Header ──────────────────────────────────────────────── */
+/* ââ Header ââââââââââââââââââââââââââââââââââââââââââââââââ */
 .hdr{height:54px;background:#1C2333;color:#fff;display:flex;align-items:center;padding:0 16px;gap:12px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:50}
 .brand{display:flex;align-items:center;gap:9px;flex-shrink:0}
 .brand-logo{width:34px;height:34px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:13px}
@@ -58,7 +58,7 @@ body{display:flex;flex-direction:column;overflow:hidden}
 .ico-btn{background:rgba(255,255,255,.1);border:none;color:#fff;width:30px;height:30px;border-radius:var(--r);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:background .15s}
 .ico-btn:hover{background:rgba(255,255,255,.2)}
 
-/* ── Barre outils ────────────────────────────────────────── */
+/* ââ Barre outils ââââââââââââââââââââââââââââââââââââââââââ */
 .bar{height:48px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 12px;gap:12px;flex-shrink:0;overflow-x:auto}
 .bar::-webkit-scrollbar{display:none}
 .flt-grp{display:flex;gap:3px;flex-shrink:0}
@@ -79,7 +79,7 @@ body{display:flex;flex-direction:column;overflow:hidden}
 .leg-item{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--text3);white-space:nowrap}
 .leg-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
 
-/* ── Tableau ─────────────────────────────────────────────── */
+/* ââ Tableau âââââââââââââââââââââââââââââââââââââââââââââââ */
 .tbl-wrap{flex:1;overflow:hidden}
 .tbl-scroll{width:100%;height:100%;overflow:auto;user-select:none;-webkit-user-select:none}
 .tbl-scroll::-webkit-scrollbar{width:6px;height:6px}
@@ -110,9 +110,9 @@ table{border-collapse:collapse;min-width:100%}
 .ci-empty{height:30px;border-radius:3px;transition:background .1s}
 .ci-filled{height:30px;border-radius:3px;padding:3px 4px;display:flex;flex-direction:column;justify-content:center}
 .ci-type{font-size:8px;font-weight:700;color:#fff;letter-spacing:.3px;line-height:1}
-.ci-n/te{font-size:7px;color:rgba(255,255,255,.85);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ci-note{font-size:7px;color:rgba(255,255,255,.85);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
-/* ── Modales ─────────────────────────────────────────────── */
+/* ââ Modales âââââââââââââââââââââââââââââââââââââââââââââââ */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .2s}
 .overlay.open{opacity:1;pointer-events:all}
 .modal{background:var(--surface);border-radius:12px;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,.2);transform:translateY(12px);transition:transform .2s;overflow:hidden}
@@ -159,7 +159,7 @@ select{padding:6px 7px;border:1.5px solid var(--border);border-radius:var(--r);f
 select:focus{outline:none;border-color:var(--accent)}
 input[type=color]{width:34px;height:34px;border:1.5px solid var(--border);border-radius:var(--r);cursor:pointer;padding:2px;background:var(--surface)}
 
-/* ── Toast ───────────────────────────────────────────────── */
+/* ââ Toast âââââââââââââââââââââââââââââââââââââââââââââââââ */
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:#1C2333;color:#fff;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:500;opacity:0;transition:all .25s;z-index:999;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
@@ -172,38 +172,38 @@ input[type=color]{width:34px;height:34px;border:1.5px solid var(--border);border
 </head>
 <body>
 
-<!-- ══ ÉCRAN DE CONFIGURATION (premier lancement) ══════════ -->
+<!-- ââ ÃCRAN DE CONFIGURATION (premier lancement) ââââââââââ -->
 <div id="setup">
   <div class="setup-card">
     <div class="setup-logo">CB</div>
-    <div class="setup-title">CHOK BÉTON — Planning</div>
-    <div class="setup-sub">Collez l'URL de votre Google Apps Script pour connecter le planning à votre Google Sheet.</div>
+    <div class="setup-title">CHOK BÃTON â Planning</div>
+    <div class="setup-sub">Collez l'URL de votre Google Apps Script pour connecter le planning Ã  votre Google Sheet.</div>
     <div class="setup-steps">
-      <div class="step"><div class="step-n">1</div><div>Ouvrez <strong>script.google.com</strong> → votre projet CHOK BÉTON</div></div>
-      <div class="step"><div class="step-n">2</div><div>Déployez → <strong>Application Web</strong> → Accès : <strong>Tout le monde</strong></div></div>
-      <div class="step"><div class="step-n">3</div><div>Copiez l'URL du déploiement et collez-la ci-dessous</div></div>
+      <div class="step"><div class="step-n">1</div><div>Ouvrez <strong>script.google.com</strong> â votre projet CHOK BÃTON</div></div>
+      <div class="step"><div class="step-n">2</div><div>DÃ©ployez â <strong>Application Web</strong> â AccÃ¨s : <strong>Tout le monde</strong></div></div>
+      <div class="step"><div class="step-n">3</div><div>Copiez l'URL du dÃ©ploiement et collez-la ci-dessous</div></div>
     </div>
     <label class="setup-label">URL Google Apps Script</label>
-    <input id="setup-url" class="setup-input" type="url" placeholder="https://script.google.com/macros/s/…/exec" autocomplete="off" spellcheck="false"/>
+    <input id="setup-url" class="setup-input" type="url" placeholder="https://script.google.com/macros/s/â¦/exec" autocomplete="off" spellcheck="false"/>
     <div id="setup-err" class="setup-err"></div>
     <button class="setup-btn" id="setup-btn" onclick="connectGAS()">Connecter le planning</button>
-    <div class="setup-info">L'URL est mémorisée sur cet appareil.<br>Modifiable dans ⚙ Paramètres si vous redeployez.</div>
+    <div class="setup-info">L'URL est mÃ©morisÃ©e sur cet appareil.<br>Modifiable dans â ParamÃ¨tres si vous redeployez.</div>
   </div>
 </div>
 
 <div id="loadbar"></div>
 
-<!-- ══ APPLICATION ═════════════════════════════════════════ -->
+<!-- ââ APPLICATION âââââââââââââââââââââââââââââââââââââââââ -->
 <header class="hdr">
   <div class="brand">
     <div class="brand-logo">CB</div>
-    <div><div class="brand-name">CHOK BÉTON</div><div class="brand-sub">Planning d'équipe</div></div>
+    <div><div class="brand-name">CHOK BÃTON</div><div class="brand-sub">Planning d'Ã©quipe</div></div>
   </div>
   <div class="hdr-mid" id="weekRange"></div>
   <div class="hdr-right">
-    <div class="sync-pill"><div class="sync-dot" id="syncDot"></div><span id="syncText">—</span></div>
-    <button class="ico-btn" title="Imprimer" onclick="window.print()">🖨</button>
-    <button class="ico-btn" title="Paramètres" onclick="openSettings()">⚙</button>
+    <div class="sync-pill"><div class="sync-dot" id="syncDot"></div><span id="syncText">â</span></div>
+    <button class="ico-btn" title="Imprimer" onclick="window.print()">ð¨</button>
+    <button class="ico-btn" title="ParamÃ¨tres" onclick="openSettings()">â</button>
   </div>
 </header>
 
@@ -221,8 +221,8 @@ input[type=color]{width:34px;height:34px;border:1.5px solid var(--border);border
     <div class="leg-item"><div class="leg-dot" id="lD3" style="background:#C62828"></div><span id="lD3n">Christopher</span></div>
     <div class="leg-item"><div class="leg-dot" style="background:#DC2626"></div><span>Absent</span></div>
     <div class="leg-item"><div class="leg-dot" style="background:#7C3AED"></div><span>Formation</span></div>
-    <div class="leg-item"><div class="leg-dot" style="background:#0891B2"></div><span>Congés</span></div>
-    <div class="leg-item"><div class="leg-dot" style="background:#6B7280"></div><span>Férié</span></div>
+    <div class="leg-item"><div class="leg-dot" style="background:#0891B2"></div><span>CongÃ©s</span></div>
+    <div class="leg-item"><div class="leg-dot" style="background:#6B7280"></div><span>FÃ©riÃ©</span></div>
   </div>
   <div class="zoom-grp">
     <span class="zoom-lbl">Zoom</span>
@@ -231,9 +231,9 @@ input[type=color]{width:34px;height:34px;border:1.5px solid var(--border);border
     <button class="zoom-btn"    data-z="0.6"  onclick="setZoom(0.6)">Tout voir</button>
   </div>
   <div class="nav-grp">
-    <button class="nav-btn" onclick="shift(-1)">◀ Préc.</button>
+    <button class="nav-btn" onclick="shift(-1)">â PrÃ©c.</button>
     <button class="nav-btn nav-today" onclick="goToday()">Aujourd'hui</button>
-    <button class="nav-btn" onclick="shift(1)">Suiv. ▶</button>
+    <button class="nav-btn" onclick="shift(1)">Suiv. â¶</button>
   </div>
 </div>
 
@@ -247,26 +247,26 @@ input[type=color]{width:34px;height:34px;border:1.5px solid var(--border);border
 <div class="overlay" id="entryOverlay">
   <div class="modal">
     <div class="modal-hdr">
-      <div><div class="modal-title" id="mChef">—</div><div class="modal-sub"><span id="mStart">—</span><span id="mDayCount" class="day-count"></span></div></div>
-      <button class="close-btn" onclick="closeModal()">×</button>
+      <div><div class="modal-title" id="mChef">â</div><div class="modal-sub"><span id="mStart">â</span><span id="mDayCount" class="day-count"></span></div></div>
+      <button class="close-btn" onclick="closeModal()">Ã</button>
     </div>
     <div class="modal-body">
-      <div class="f-group"><div class="f-label">Fin de période</div>
+      <div class="f-group"><div class="f-label">Fin de pÃ©riode</div>
         <input type="date" class="f-input" id="mEndDate" oninput="onEndChange()"/>
       </div>
       <div class="f-group"><div class="f-label">Directeur</div><div class="radio-row" id="mDirRow"></div></div>
       <div class="f-group"><div class="f-label">Type</div><div class="type-grid" id="mTypeGrid"></div></div>
       <div class="f-group"><div class="f-label">Note (optionnel)</div>
-        <input type="text" class="f-input" id="mNote" placeholder="Nom du chantier, raison…" maxlength="60"/>
+        <input type="text" class="f-input" id="mNote" placeholder="Nom du chantier, raisonâ¦" maxlength="60"/>
       </div>
-      <div class="f-group"><div class="f-label">Récurrence</div>
+      <div class="f-group"><div class="f-label">RÃ©currence</div>
         <div class="rec-row">
           <button class="rec-btn on" data-rec="none" onclick="setRec('none',this)">Aucune</button>
           <button class="rec-btn" data-rec="weekly" onclick="setRec('weekly',this)">Hebdo.</button>
-          <button class="rec-btn" data-rec="until" onclick="setRec('until',this)">Jusqu'au…</button>
+          <button class="rec-btn" data-rec="until" onclick="setRec('until',this)">Jusqu'auâ¦</button>
         </div>
         <div id="recWkOpts" class="rec-extra" style="display:none">
-          Répéter <input type="number" id="recWeeks" value="4" min="1" max="52" style="width:52px;padding:4px 6px;border:1.5px solid var(--border);border-radius:4px;font-size:12px"> semaines
+          RÃ©pÃ©ter <input type="number" id="recWeeks" value="4" min="1" max="52" style="width:52px;padding:4px 6px;border:1.5px solid var(--border);border-radius:4px;font-size:12px"> semaines
         </div>
         <div id="recUntilOpts" style="display:none;margin-top:7px">
           <input type="date" class="f-input" id="recUntilDate"/>
@@ -274,7 +274,7 @@ input[type=color]{width:34px;height:34px;border:1.5px solid var(--border);border
       </div>
     </div>
     <div class="modal-ftr">
-      <button class="btn-del" onclick="clearCell()">✕ Effacer</button>
+      <button class="btn-del" onclick="clearCell()">â Effacer</button>
       <button class="btn-sec" onclick="closeModal()">Annuler</button>
       <button class="btn-pri" onclick="saveCell()">Enregistrer</button>
     </div>
@@ -285,24 +285,24 @@ input[type=color]{width:34px;height:34px;border:1.5px solid var(--border);border
 <div class="overlay" id="conflictOverlay">
   <div class="modal">
     <div class="modal-hdr">
-      <div><div class="modal-title">⚠ Conflits détectés</div><div class="modal-sub" id="conflictSub"></div></div>
-      <button class="close-btn" onclick="cancelConflict()">×</button>
+      <div><div class="modal-title">â  Conflits dÃ©tectÃ©s</div><div class="modal-sub" id="conflictSub"></div></div>
+      <button class="close-btn" onclick="cancelConflict()">Ã</button>
     </div>
     <div class="modal-body" id="conflictList"></div>
     <div class="modal-ftr">
       <button class="btn-sec" onclick="cancelConflict()">Annuler</button>
-      <button class="btn-pri" style="background:#D97706" onclick="confirmConflict()">Écraser quand même</button>
+      <button class="btn-pri" style="background:#D97706" onclick="confirmConflict()">Ãcraser quand mÃªme</button>
     </div>
   </div>
 </div>
 
-<!-- Paramètres -->
+<!-- ParamÃ¨tres -->
 <div class="overlay" id="settingsOverlay">
   <div class="modal settings-modal">
-    <div class="modal-hdr"><div class="modal-title">⚙ Paramètres</div><button class="close-btn" onclick="closeSettings()">×</button></div>
+    <div class="modal-hdr"><div class="modal-title">â ParamÃ¨tres</div><button class="close-btn" onclick="closeSettings()">Ã</button></div>
     <div class="settings-body" id="settingsBody"></div>
     <div class="modal-ftr">
-      <button class="btn-del" onclick="resetAll()">⚠ Tout réinitialiser</button>
+      <button class="btn-del" onclick="resetAll()">â  Tout rÃ©initialiser</button>
       <button class="btn-sec" onclick="closeSettings()">Annuler</button>
       <button class="btn-pri" onclick="saveSettings()">Sauvegarder</button>
     </div>
@@ -312,11 +312,11 @@ input[type=color]{width:34px;height:34px;border:1.5px solid var(--border);border
 <div class="toast" id="toast"></div>
 
 <script>
-// ══════════════════════════════════════════════════════════
-//  CHOK BÉTON — Planning d'équipe
-//  Hébergé sur GitHub Pages · API : Google Apps Script
+// ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+//  CHOK BÃTON â Planning d'Ã©quipe
+//  HÃ©bergÃ© sur GitHub Pages Â· API : Google Apps Script
 //  Fonctionne sur Chrome, Safari, Firefox, Edge, iOS, Android
-// ══════════════════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 
 const VISIBLE_WEEKS = 5
 const DAYS       = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi']
@@ -324,9 +324,9 @@ const DAYS_SHORT = ['Lun','Mar','Mer','Jeu','Ven','Sam']
 const TYPES = [
   {v:'CHANTIER', label:'Chantier',  color:'director'},
   {v:'ABSENT',   label:'Absent',    color:'#DC2626'},
-  {v:'FERIE',    label:'Férié',     color:'#6B7280'},
+  {v:'FERIE',    label:'FÃ©riÃ©',     color:'#6B7280'},
   {v:'FORMATION',label:'Formation', color:'#7C3AED'},
-  {v:'CONGES',   label:'Congés',    color:'#0891B2'},
+  {v:'CONGES',   label:'CongÃ©s',    color:'#0891B2'},
 ]
 const DEFAULT_DIRS = [
   {id:'D1',name:'Christian',  color:'#1565C0'},
@@ -336,9 +336,9 @@ const DEFAULT_DIRS = [
 
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbyovrVtwNYaZhBnQewdHxfZhUSRvKEvWgOpmYTiZ2Sdx494FhusobScjWg-tdko93Nq/exec'
 
-let S = {cells:{}, chefs:[], dirs:[], sw:0, filter:'ALL', gasUrl: GAS_URL}
+let S = {cells:{}, chefs:[], dirs:[], sw:0, flt:'ALL', gasUrl: GAS_URL}
 
-// ── Configuration au démarrage ────────────────────────────
+// ââ Configuration au dÃ©marrage ââââââââââââââââââââââââââââ
 function initApp(){
   document.getElementById('setup').classList.add('hidden')
   loadAll().then(()=>initZoom())
@@ -361,7 +361,7 @@ function connectGAS(){
     err.classList.add('show'); return
   }
   err.classList.remove('show')
-  btn.disabled = true; btn.textContent = 'Connexion…'
+  btn.disabled = true; btn.textContent = 'Connexionâ¦'
   S.gasUrl = url
   gasCall('load').then(d=>{
     localStorage.setItem('chok_gas_url', url)
@@ -371,7 +371,7 @@ function connectGAS(){
     btn.disabled=false; btn.textContent='Connecter le planning'
   }).catch(()=>{
     btn.disabled=false; btn.textContent='Connecter le planning'
-    err.textContent='Connexion échouée. Vérifiez que le déploiement est bien "Tout le monde" et réessayez.'
+    err.textContent='Connexion Ã©chouÃ©e. VÃ©rifiez que le dÃ©ploiement est bien "Tout le monde" et rÃ©essayez.'
     err.classList.add('show')
   })
 }
@@ -381,9 +381,9 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(inp) inp.addEventListener('keydown', e=>{ if(e.key==='Enter') connectGAS() })
 })
 
-// ── API : fetch() en priorité, JSONP en secours ───────────
-// fetch() fonctionne depuis GitHub Pages (CORS autorisé par GAS public)
-// JSONP prend le relais si fetch() est bloqué
+// ââ API : fetch() en prioritÃ©, JSONP en secours âââââââââââ
+// fetch() fonctionne depuis GitHub Pages (CORS autorisÃ© par GAS public)
+// JSONP prend le relais si fetch() est bloquÃ©
 async function gasCall(action, data){
   const qs = '?action='+action+(data?'&data='+encodeURIComponent(JSON.stringify(data)):'')
   const url = S.gasUrl + qs
@@ -400,7 +400,7 @@ async function gasCall(action, data){
     return JSON.parse(m ? m[1] : text)
   } catch(e){
     if(e.name==='AbortError') throw new Error('Timeout')
-    // fetch() échoué → on tente JSONP
+    // fetch() Ã©chouÃ© â on tente JSONP
   }
 
   // Tentative 2 : JSONP (secours universel)
@@ -410,21 +410,21 @@ async function gasCall(action, data){
     const tid = setTimeout(()=>{ cleanup(); reject(new Error('Timeout')) }, 25000)
     const cleanup = ()=>{ delete window[cb]; s.parentNode&&s.parentNode.removeChild(s) }
     window[cb] = r=>{ clearTimeout(tid); cleanup(); resolve(r) }
-    s.onerror  = ()=>{ clearTimeout(tid); cleanup(); reject(new Error('Connexion refusée')) }
+    s.onerror  = ()=>{ clearTimeout(tid); cleanup(); reject(new Error('Connexion refusÃ©e')) }
     document.head.appendChild(s)
     s.src = url+'&callback='+cb
   })
 }
 
-// ── Sync UI ───────────────────────────────────────────────
+// ââ Sync UI âââââââââââââââââââââââââââââââââââââââââââââââ
 function setSync(state){
   const dot=document.getElementById('syncDot'), txt=document.getElementById('syncText'), bar=document.getElementById('loadbar')
   dot.className='sync-dot'+(state!=='ok'?' '+state:'')
-  txt.textContent=state==='syncing'?'Sync…':state==='err'?'Erreur':'✓ Synchro'
+  txt.textContent=state==='syncing'?'Syncâ¦':state==='err'?'Erreur':'â Synchro'
   bar.classList.toggle('on',state==='syncing')
 }
 
-// ── Chargement ────────────────────────────────────────────
+// ââ Chargement ââââââââââââââââââââââââââââââââââââââââââââ
 async function loadAll(){
   setSync('syncing')
   try {
@@ -433,7 +433,7 @@ async function loadAll(){
     setInterval(silentRefresh, 60000)
   } catch(e){
     setSync('err')
-    toast('⚠ Erreur de chargement. Vérifiez votre connexion.', true)
+    toast('â  Erreur de chargement. VÃ©rifiez votre connexion.', true)
     S.dirs=[...DEFAULT_DIRS]; S.chefs=[]; render()
   }
 }
@@ -449,7 +449,7 @@ async function silentRefresh(){
   try { const d=await gasCall('load'); S.cells=d.cells||{}; renderTable() } catch(e){}
 }
 
-// ── Date utils ────────────────────────────────────────────
+// ââ Date utils ââââââââââââââââââââââââââââââââââââââââââââ
 function monday(off=0){
   const n=new Date(),day=n.getDay(),diff=day===0?-6:1-day
   n.setHours(0,0,0,0); n.setDate(n.getDate()+diff+off*7); return n
@@ -473,7 +473,7 @@ function absWkToMonday(idx){
 function dateToAbsWk(d){return `${d.getFullYear()}${p(weekNum(d))}`}
 function dayIdx(d){const day=d.getDay();return day===0?6:day-1}
 
-// ── Jours fériés ──────────────────────────────────────────
+// ââ Jours fÃ©riÃ©s ââââââââââââââââââââââââââââââââââââââââââ
 function easter(y){
   const a=y%19,b=Math.floor(y/100),c=y%100,d=Math.floor(b/4),e=b%4
   const f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3)
@@ -486,37 +486,37 @@ function holidays(y){
   if(HC[y])return HC[y]
   const e=easter(y),ad=(d,n)=>{const r=new Date(d);r.setDate(r.getDate()+n);return r}
   HC[y]={
-    [`${y}-01-01`]:"Jour de l'An",[isoDate(ad(e,1))]:"Lundi de Pâques",
-    [`${y}-05-01`]:"Fête du Travail",[`${y}-05-08`]:"Victoire 1945",
-    [isoDate(ad(e,39))]:"Ascension",[isoDate(ad(e,50))]:"Lundi de Pentecôte",
-    [`${y}-07-14`]:"Fête Nationale",[`${y}-08-15`]:"Assomption",
-    [`${y}-11-01`]:"Toussaint",[`${y}-11-11`]:"Armistice",[`${y}-12-25`]:"Noël"
+    [`${y}-01-01`]:"Jour de l'An",[isoDate(ad(e,1))]:"Lundi de PÃ¢ques",
+    [`${y}-05-01`]:"FÃªte du Travail",[`${y}-05-08`]:"Victoire 1945",
+    [isoDate(ad(e,39))]:"Ascension",[isoDate(ad(e,50))]:"Lundi de PentecÃ´te",
+    [`${y}-07-14`]:"FÃªte Nationale",[`${y}-08-15`]:"Assomption",
+    [`${y}-11-01`]:"Toussaint",[`${y}-11-11`]:"Armistice",[`${y}-12-25`]:"NoÃ«l"
   }
   return HC[y]
 }
 function getHoliday(d){return holidays(d.getFullYear())[isoDate(d)]||null}
 
-// ── Cell key ──────────────────────────────────────────────
+// ââ Cell key ââââââââââââââââââââââââââââââââââââââââââââââ
 function ck(w,d,c){return `w${w}_d${d}_c${c}`}
 function dirColor(id){const d=S.dirs.find(x=>x.id===id);return d?d.color:'#6B7280'}
 
-// ── Render ────────────────────────────────────────────────
+// ââ Render ââââââââââââââââââââââââââââââââââââââââââââââââ
 function render(){renderFilters();renderTable();updateHeader()}
 
 function updateHeader(){
   const m0=monday(S.sw),m4=monday(S.sw+VISIBLE_WEEKS-1),end=addDays(m4,5)
   const el=document.getElementById('weekRange')
-  if(el)el.textContent=`S${weekNum(m0)} – S${weekNum(m4)}  ·  ${fmt(m0)} au ${fmt(end)}`
+  if(el)el.textContent=`S${weekNum(m0)} â S${weekNum(m4)}  Â·  ${fmt(m0)} au ${fmt(end)}`
 }
 
 function renderFilters(){
   S.dirs.forEach((d,i)=>{
     const btn=document.getElementById(`fD${i+1}`),ldot=document.getElementById(`lD${i+1}`),lname=document.getElementById(`lD${i+1}n`)
-    if(btn){btn.textContent=d.name;btn.style.background=S.filter===d.id?d.color:'';btn.style.borderColor=S.filter===d.id?d.color:'';btn.style.color=S.filter===d.id?'#fff':'';btn.classList.toggle('on',S.filter===d.id)}
+    if(btn){btn.textContent=d.name;btn.style.background=S.flt===d.id?d.color:'';btn.style.borderColor=S.flt===d.id?d.color:'';btn.style.color=S.flt===d.id?'#fff':'';btn.classList.toggle('on',S.flt===d.id)}
     if(ldot)ldot.style.background=d.color
     if(lname)lname.textContent=d.name
   })
-  document.querySelector('[data-dir="ALL"]')?.classList.toggle('on',S.filter==='ALL')
+  document.querySelector('[data-dir="ALL"]')?.classList.toggle('on',S.flt==='ALL')
 }
 
 function renderTable(){
@@ -526,7 +526,7 @@ function renderTable(){
   let th=`<tr><th class="th-week"></th>`
   S.chefs.forEach((chef,ci)=>{
     const dir=S.dirs.find(d=>d.id===chef.directorId)||S.dirs[0]
-    const dim=S.filter!=='ALL'&&chef.directorId!==S.filter
+    const dim=S.flt!=='ALL'&&chef.directorId!==S.flt
     const parts=chef.name.split(' '),last=parts[0],first=parts.slice(1).join(' ')
     th+=`<th class="th-chef${dim?' dim':''}" style="border-top-color:${dir?dir.color:'#999'}">
       <div class="th-ln" title="${chef.name}">${last}</div>
@@ -538,7 +538,7 @@ function renderTable(){
   let html=''
   for(let wi=0;wi<VISIBLE_WEEKS;wi++){
     const off=S.sw+wi,mon=monday(off),wn=weekNum(mon),wIdx=absWkIdx(off),end=addDays(mon,5)
-    html+=`<tr class="rw-wk"><td class="wk-lbl">S${wn} · ${fmt(mon)}–${fmt(end)}</td><td colspan="${S.chefs.length}"></td></tr>`
+    html+=`<tr class="rw-wk"><td class="wk-lbl">S${wn} Â· ${fmt(mon)}â${fmt(end)}</td><td colspan="${S.chefs.length}"></td></tr>`
     DAYS.forEach((dn,di)=>{
       const date=addDays(mon,di),iso=isoDate(date),hol=getHoliday(date),isToday=iso===todayIso
       html+=`<tr class="rw-day"><td class="day-cell${isToday?' today':''}"><div class="day-inner">
@@ -547,10 +547,10 @@ function renderTable(){
         ${hol?`<span class="hol-name">${hol}</span>`:''}
       </div></td>`
       S.chefs.forEach((chef,ci)=>{
-        const key=ck(WIdx,di,ci),cell=S.cells[key]
-        const dim=S.filter!=='ALL'&&chef.directorId!==S.filter
-        const eTYpE=!}cell||!cell.type)&&hol?'FERIE_AUTO':(cell?cell.type:'')
-        const eNOte=(!cell||!cell.type)&&hol?hol:(cell?cell.note:'')
+        const key=ck(wIdx,di,ci),cell=S.cells[key]
+        const dim=S.flt!=='ALL'&&chef.directorId!==S.flt
+        const eType=(!cell||!cell.type)&&hol?'FERIE_AUTO':(cell?cell.type:'')
+        const eNote=(!cell||!cell.type)&&hol?hol:(cell?cell.note:'')
         let bg='#6B7280'
         if(eType==='CHANTIER')       bg=dirColor(cell?.directorId||chef.directorId)
         else if(eType==='ABSENT')    bg='#DC2626'
@@ -560,7 +560,7 @@ function renderTable(){
         html+=`<td class="cell${dim?' dim':''}${hol?' hol-bg':''}" data-w="${wIdx}" data-d="${di}" data-c="${ci}"
           ${dim?'':' onmousedown="startDrag(event)" onmouseover="extDrag(event)" onclick="onCellClick(event)"'}>
           ${eType
-            ?`<div class="ci-filled" style="background:${bg}"><div class="ci-type">${eType==='FERIE_AUTO'?'FÉRIÉ':eType}</div>${eNote?`<div class="ci-note">${eNote}</div>`:''}</div>`
+            ?`<div class="ci-filled" style="background:${bg}"><div class="ci-type">${eType==='FERIE_AUTO'?'FÃRIÃ':eType}</div>${eNote?`<div class="ci-note">${eNote}</div>`:''}</div>`
             :`<div class="ci-empty"></div>`}
         </td>`
       })
@@ -570,7 +570,7 @@ function renderTable(){
   tbody.innerHTML=html
 }
 
-// ── Drag ──────────────────────────────────────────────────
+// ââ Drag ââââââââââââââââââââââââââââââââââââââââââââââââââ
 let DG={on:false,ci:null,s:null,e:null,moved:false}
 function cellDate(td){const m=absWkToMonday(td.dataset.w),d=addDays(m,+td.dataset.d);d.setHours(0,0,0,0);return d}
 function startDrag(ev){ev.preventDefault();const td=ev.currentTarget;DG={on:true,ci:+td.dataset.c,s:cellDate(td),e:cellDate(td),moved:false};hlDrag()}
@@ -588,7 +588,7 @@ function clearDrag(){document.querySelectorAll('.cell.drag-hl').forEach(td=>td.c
 document.addEventListener('mouseup',()=>{if(!DG.on)return;const m=DG.moved;DG.on=false;clearDrag();if(m)openModal(DG.ci,DG.s,DG.e)})
 document.addEventListener('mouseleave',()=>{if(DG.on){DG.on=false;clearDrag()}})
 
-// ── Modal ─────────────────────────────────────────────────
+// ââ Modal âââââââââââââââââââââââââââââââââââââââââââââââââ
 let MS={ci:null,s:null,e:null,type:'',dir:'D1',note:'',rec:'none'}
 function openModal(ci,startDate,endDate){
   const chef=S.chefs[ci]
@@ -596,7 +596,7 @@ function openModal(ci,startDate,endDate){
   const e=new Date(Math.max(startDate,endDate));e.setHours(0,0,0,0)
   const key=ck(dateToAbsWk(s),dayIdx(s),ci),cell=S.cells[key]
   MS={ci,s,e,type:cell?.type||'',dir:cell?.directorId||chef?.directorId||'D1',note:cell?.note||'',rec:'none'}
-  document.getElementById('mChef').textContent=chef?.name||'—'
+  document.getElementById('mChef').textContent=chef?.name||'â'
   document.getElementById('mStart').textContent=`Du ${fmt(s)} au`
   document.getElementById('mEndDate').value=isoDate(e)
   onEndChange()
@@ -667,13 +667,13 @@ function buildDates(){
   return dates
 }
 
-// ── Conflits ──────────────────────────────────────────────
+// ââ Conflits ââââââââââââââââââââââââââââââââââââââââââââââ
 let _pending=null
 function checkConflicts(dates,note){
-  const conflicts=dates.filter(d=>{const c=S.cells[ck(dateToAbsWk(d),dayIdx(d),MS.ci+];return c&&c.type&&(c.type!==MS.type||c.note!==note)})
+  const conflicts=dates.filter(d=>{const c=S.cells[ck(dateToAbsWk(d),dayIdx(d),MS.ci)];return c&&c.type&&(c.type!==MS.type||c.note!==note)})
   if(!conflicts.length){doSave(dates,note);return}
   _pending={dates,note}
-  document.getElementById('conflictSub').textContent=`${conflicts.length} conflit${conflicts.length>1?'s':''} — ${S.chefs[MS.ci]?.name}`
+  document.getElementById('conflictSub').textContent=`${conflicts.length} conflit${conflicts.length>1?'s':''} â ${S.chefs[MS.ci]?.name}`
   document.getElementById('conflictList').innerHTML=conflicts.map(d=>{
     const c=S.cells[ck(dateToAbsWk(d),dayIdx(d),MS.ci)]
     const bg=c.type==='CHANTIER'?dirColor(c.directorId):(TYPES.find(x=>x.v===c.type)?.color||'#6B7280')
@@ -684,7 +684,7 @@ function checkConflicts(dates,note){
 function cancelConflict(){document.getElementById('conflictOverlay').classList.remove('open');_pending=null}
 function confirmConflict(){document.getElementById('conflictOverlay').classList.remove('open');if(_pending){doSave(_pending.dates,_pending.note);_pending=null}}
 
-// ── Sauvegarde ────────────────────────────────────────────
+// ââ Sauvegarde ââââââââââââââââââââââââââââââââââââââââââââ
 async function doSave(dates,note){
   const entries=dates.map(d=>({key:ck(dateToAbsWk(d),dayIdx(d),MS.ci),type:MS.type||'',note,directorId:MS.dir}))
   entries.forEach(({key,type,note,directorId})=>{
@@ -695,25 +695,25 @@ async function doSave(dates,note){
   const savedType=MS.type,cnt=dates.length
   try {
     await gasCall('save',entries);setSync('ok')
-    toast(savedType?`✓ ${cnt} jour${cnt>1?'s':''} enregistré${cnt>1?'s':''}`:'✓ Effacé')
-  } catch(e){setSync('err');toast('⚠ Erreur sauvegarde',true)}
+    toast(savedType?`â ${cnt} jour${cnt>1?'s':''} enregistrÃ©${cnt>1?'s':''}`:'â EffacÃ©')
+  } catch(e){setSync('err');toast('â  Erreur sauvegarde',true)}
 }
 
-// ── Paramètres ────────────────────────────────────────────
+// ââ ParamÃ¨tres ââââââââââââââââââââââââââââââââââââââââââââ
 function openSettings(){
   const currentUrl=localStorage.getItem('chok_gas_url')||''
   document.getElementById('settingsBody').innerHTML=`
     <div class="s-section">
       <div class="s-title">URL Apps Script</div>
       <div class="s-row"><input type="text" class="f-input" id="cfg_url" value="${currentUrl}" style="font-size:11px;flex:1"></div>
-      <div style="font-size:11px;color:var(--text3)">Modifiez si vous avez redeployé Apps Script.</div>
+      <div style="font-size:11px;color:var(--text3)">Modifiez si vous avez redeployÃ© Apps Script.</div>
     </div>
     <div class="s-section">
       <div class="s-title">Directeurs</div>
       ${S.dirs.map(d=>`<div class="s-row"><input type="color" id="cfg_color_${d.id}" value="${d.color}"><input type="text" class="f-input" id="cfg_name_${d.id}" value="${d.name}" style="flex:1"></div>`).join('')}
     </div>
     <div class="s-section">
-      <div class="s-title">Chefs d'équipe (${S.chefs.length})</div>
+      <div class="s-title">Chefs d'Ã©quipe (${S.chefs.length})</div>
       <div class="chefs-grid">
         ${S.chefs.map((c,i)=>`<div class="chef-row">
           <input type="text" class="f-input" id="cn_${i}" value="${c.name}" style="font-size:12px;padding:5px 7px">
@@ -730,18 +730,18 @@ async function saveSettings(){
   const nd=S.dirs.map(d=>({...d,name:document.getElementById(`cfg_name_${d.id}`)?.value||d.name,color:document.getElementById(`cfg_color_${d.id}`)?.value||d.color}))
   const nc=S.chefs.map((c,i)=>({...c,name:document.getElementById(`cn_${i}`)?.value||c.name,directorId:document.getElementById(`cd_${i}`)?.value||c.directorId}))
   S.dirs=nd;S.chefs=nc;closeSettings();render();setSync('syncing')
-  try{await gasCall('saveConfig',{directors:nd,chefs:nc});setSync('ok');toast('✓ Configuration sauvegardée')}
-  catch(e){setSync('err');toast('⚠ Erreur configuration',true)}
+  try{await gasCall('saveConfig',{directors:nd,chefs:nc});setSync('ok');toast('â Configuration sauvegardÃ©e')}
+  catch(e){setSync('err');toast('â  Erreur configuration',true)}
 }
 
 async function resetAll(){
-  if(!confirm('Réinitialiser TOUTES les données du planning ?\nCette action est irréversible.'))return
+  if(!confirm('RÃ©initialiser TOUTES les donnÃ©es du planning ?\nCette action est irrÃ©versible.'))return
   setSync('syncing')
-  try{await gasCall('reset');setSync('ok');loadAll();toast('✓ Planning réinitialisé')}
-  catch(e){setSync('err');toast('⚠ Erreur reset',true)}
+  try{await gasCall('reset');setSync('ok');loadAll();toast('â Planning rÃ©initialisÃ©')}
+  catch(e){setSync('err');toast('â  Erreur reset',true)}
 }
 
-// ── Zoom ──────────────────────────────────────────────────
+// ââ Zoom ââââââââââââââââââââââââââââââââââââââââââââââââââ
 function setZoom(z){
   S.zoom=z
   const tbl=document.querySelector('.tbl-scroll table')
@@ -754,12 +754,12 @@ function initZoom(){
   setZoom(saved)
 }
 
-// ── Navigation ────────────────────────────────────────────
+// ââ Navigation ââââââââââââââââââââââââââââââââââââââââââââ
 function shift(n){S.sw+=n;render()}
 function goToday(){S.sw=0;render()}
-function setFilter(dir,btn){S.filter=dir;document.querySelectorAll('.flt').forEach(b=>b.classList.remove('on'));btn.classList.add('on');render()}
+function setFilter(dir,btn){S.flt=dir;document.querySelectorAll('.flt').forEach(b=>b.classList.remove('on'));btn.classList.add('on');render()}
 
-// ── Toast ─────────────────────────────────────────────────
+// ââ Toast âââââââââââââââââââââââââââââââââââââââââââââââââ
 function toast(msg,isErr=false){
   const t=document.getElementById('toast');t.textContent=msg
   t.style.background=isErr?'#DC2626':'#1C2333';t.classList.add('show')
