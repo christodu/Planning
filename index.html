@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-<title>CHOK BÃTON â Planning</title>
+<title>CHOK BÉTON — Planning</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -15,12 +15,12 @@
 html,body{height:100%;font-family:'DM Sans',sans-serif;font-size:14px;background:var(--bg);color:var(--text)}
 body{display:flex;flex-direction:column;overflow:hidden}
 
-/* ââ Barre de chargement âââââââââââââââââââââââââââââââââââ */
+/* ── Barre de chargement ─────────────────────────────────── */
 #loadbar{position:fixed;top:0;left:0;right:0;height:3px;background:var(--accent);z-index:9999;display:none;transform-origin:left}
 #loadbar.on{display:block;animation:lb 1.4s ease infinite}
 @keyframes lb{0%{transform:scaleX(0)}60%{transform:scaleX(.75)}100%{transform:scaleX(1);opacity:0}}
 
-/* ââ Ãcran de configuration (premier lancement) ââââââââââââ */
+/* ── Écran de configuration (premier lancement) ──────────── */
 #setup{position:fixed;inset:0;background:#F4F5F7;z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px}
 #setup.hidden{display:none}
 .setup-card{background:#fff;border-radius:16px;padding:32px;width:100%;max-width:460px;box-shadow:0 8px 40px rgba(0,0,0,.1)}
@@ -42,7 +42,7 @@ body{display:flex;flex-direction:column;overflow:hidden}
 .setup-btn:disabled{background:#9AA0B2;cursor:not-allowed}
 .setup-info{font-size:11px;color:var(--text3);margin-top:10px;text-align:center;line-height:1.5}
 
-/* ââ Header ââââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Header ──────────────────────────────────────────────── */
 .hdr{height:54px;background:#1C2333;color:#fff;display:flex;align-items:center;padding:0 16px;gap:12px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:50}
 .brand{display:flex;align-items:center;gap:9px;flex-shrink:0}
 .brand-logo{width:34px;height:34px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:13px}
@@ -58,7 +58,7 @@ body{display:flex;flex-direction:column;overflow:hidden}
 .ico-btn{background:rgba(255,255,255,.1);border:none;color:#fff;width:30px;height:30px;border-radius:var(--r);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:background .15s}
 .ico-btn:hover{background:rgba(255,255,255,.2)}
 
-/* ââ Barre outils ââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Barre outils ────────────────────────────────────────── */
 .bar{height:48px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 12px;gap:12px;flex-shrink:0;overflow-x:auto}
 .bar::-webkit-scrollbar{display:none}
 .flt-grp{display:flex;gap:3px;flex-shrink:0}
@@ -79,7 +79,7 @@ body{display:flex;flex-direction:column;overflow:hidden}
 .leg-item{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--text3);white-space:nowrap}
 .leg-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
 
-/* ââ Tableau âââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Tableau ─────────────────────────────────────────────── */
 .tbl-wrap{flex:1;overflow:hidden}
 .tbl-scroll{width:100%;height:100%;overflow:auto;user-select:none;-webkit-user-select:none}
 .tbl-scroll::-webkit-scrollbar{width:6px;height:6px}
@@ -112,7 +112,7 @@ table{border-collapse:collapse;min-width:100%}
 .ci-type{font-size:8px;font-weight:700;color:#fff;letter-spacing:.3px;line-height:1}
 .ci-note{font-size:7px;color:rgba(255,255,255,.85);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
-/* ââ Modales âââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Modales ─────────────────────────────────────────────── */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .2s}
 .overlay.open{opacity:1;pointer-events:all}
 .modal{background:var(--surface);border-radius:12px;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,.2);transform:translateY(12px);transition:transform .2s;overflow:hidden}
@@ -159,7 +159,7 @@ select{padding:6px 7px;border:1.5px solid var(--border);border-radius:var(--r);f
 select:focus{outline:none;border-color:var(--accent)}
 input[type=color]{width:34px;height:34px;border:1.5px solid var(--border);border-radius:var(--r);cursor:pointer;padding:2px;background:var(--surface)}
 
-/* ââ Toast âââââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Toast ───────────────────────────────────────────────── */
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:#1C2333;color:#fff;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:500;opacity:0;transition:all .25s;z-index:999;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
@@ -172,38 +172,38 @@ input[type=color]{width:34px;height:34px;border:1.5px solid var(--border);border
 </head>
 <body>
 
-<!-- ââ ÃCRAN DE CONFIGURATION (premier lancement) ââââââââââ -->
+<!-- ══ ÉCRAN DE CONFIGURATION (premier lancement) ══════════ -->
 <div id="setup">
   <div class="setup-card">
     <div class="setup-logo">CB</div>
-    <div class="setup-title">CHOK BÃTON â Planning</div>
-    <div class="setup-sub">Collez l'URL de votre Google Apps Script pour connecter le planning Ã  votre Google Sheet.</div>
+    <div class="setup-title">CHOK BÉTON — Planning</div>
+    <div class="setup-sub">Collez l'URL de votre Google Apps Script pour connecter le planning à votre Google Sheet.</div>
     <div class="setup-steps">
-      <div class="step"><div class="step-n">1</div><div>Ouvrez <strong>script.google.com</strong> â votre projet CHOK BÃTON</div></div>
-      <div class="step"><div class="step-n">2</div><div>DÃ©ployez â <strong>Application Web</strong> â AccÃ¨s : <strong>Tout le monde</strong></div></div>
-      <div class="step"><div class="step-n">3</div><div>Copiez l'URL du dÃ©ploiement et collez-la ci-dessous</div></div>
+      <div class="step"><div class="step-n">1</div><div>Ouvrez <strong>script.google.com</strong> → votre projet CHOK BÉTON</div></div>
+      <div class="step"><div class="step-n">2</div><div>Déployez → <strong>Application Web</strong> → Accès : <strong>Tout le monde</strong></div></div>
+      <div class="step"><div class="step-n">3</div><div>Copiez l'URL du déploiement et collez-la ci-dessous</div></div>
     </div>
     <label class="setup-label">URL Google Apps Script</label>
-    <input id="setup-url" class="setup-input" type="url" placeholder="https://script.google.com/macros/s/â¦/exec" autocomplete="off" spellcheck="false"/>
+    <input id="setup-url" class="setup-input" type="url" placeholder="https://script.google.com/macros/s/…/exec" autocomplete="off" spellcheck="false"/>
     <div id="setup-err" class="setup-err"></div>
     <button class="setup-btn" id="setup-btn" onclick="connectGAS()">Connecter le planning</button>
-    <div class="setup-info">L'URL est mÃ©morisÃ©e sur cet appareil.<br>Modifiable dans â ParamÃ¨tres si vous redeployez.</div>
+    <div class="setup-info">L'URL est mémorisée sur cet appareil.<br>Modifiable dans ⚙ Paramètres si vous redeployez.</div>
   </div>
 </div>
 
 <div id="loadbar"></div>
 
-<!-- ââ APPLICATION âââââââââââââââââââââââââââââââââââââââââ -->
+<!-- ══ APPLICATION ═════════════════════════════════════════ -->
 <header class="hdr">
   <div class="brand">
     <div class="brand-logo">CB</div>
-    <div><div class="brand-name">CHOK BÃTON</div><div class="brand-sub">Planning d'Ã©quipe</div></div>
+    <div><div class="brand-name">CHOK BÉTON</div><div class="brand-sub">Planning d'équipe</div></div>
   </div>
   <div class="hdr-mid" id="weekRange"></div>
   <div class="hdr-right">
-    <div class="sync-pill"><div class="sync-dot" id="syncDot"></div><span id="syncText">â</span></div>
-    <button class="ico-btn" title="Imprimer" onclick="window.print()">ð¨</button>
-    <button class="ico-btn" title="ParamÃ¨tres" onclick="openSettings()">â</button>
+    <div class="sync-pill"><div class="sync-dot" id="syncDot"></div><span id="syncText">—</span></div>
+    <button class="ico-btn" title="Imprimer" onclick="window.print()">🖨</button>
+    <button class="ico-btn" title="Paramètres" onclick="openSettings()">⚙</button>
   </div>
 </header>
 
@@ -221,8 +221,8 @@ input[type=color]{width:34px;height:34px;border:1.5px solid var(--border);border
     <div class="leg-item"><div class="leg-dot" id="lD3" style="background:#C62828"></div><span id="lD3n">Christopher</span></div>
     <div class="leg-item"><div class="leg-dot" style="background:#DC2626"></div><span>Absent</span></div>
     <div class="leg-item"><div class="leg-dot" style="background:#7C3AED"></div><span>Formation</span></div>
-    <div class="leg-item"><div class="leg-dot" style="background:#0891B2"></div><span>CongÃ©s</span></div>
-    <div class="leg-item"><div class="leg-dot" style="background:#6B7280"></div><span>FÃ©riÃ©</span></div>
+    <div class="leg-item"><div class="leg-dot" style="background:#0891B2"></div><span>Congés</span></div>
+    <div class="leg-item"><div class="leg-dot" style="background:#6B7280"></div><span>Férié</span></div>
   </div>
   <div class="zoom-grp">
     <span class="zoom-lbl">Zoom</span>
@@ -231,9 +231,9 @@ input[type=color]{width:34px;height:34px;border:1.5px solid var(--border);border
     <button class="zoom-btn"    data-z="0.6"  onclick="setZoom(0.6)">Tout voir</button>
   </div>
   <div class="nav-grp">
-    <button class="nav-btn" onclick="shift(-1)">â PrÃ©c.</button>
+    <button class="nav-btn" onclick="shift(-1)">◀ Préc.</button>
     <button class="nav-btn nav-today" onclick="goToday()">Aujourd'hui</button>
-    <button class="nav-btn" onclick="shift(1)">Suiv. â¶</button>
+    <button class="nav-btn" onclick="shift(1)">Suiv. ▶</button>
   </div>
 </div>
 
@@ -247,26 +247,26 @@ input[type=color]{width:34px;height:34px;border:1.5px solid var(--border);border
 <div class="overlay" id="entryOverlay">
   <div class="modal">
     <div class="modal-hdr">
-      <div><div class="modal-title" id="mChef">â</div><div class="modal-sub"><span id="mStart">â</span><span id="mDayCount" class="day-count"></span></div></div>
-      <button class="close-btn" onclick="closeModal()">Ã</button>
+      <div><div class="modal-title" id="mChef">—</div><div class="modal-sub"><span id="mStart">—</span><span id="mDayCount" class="day-count"></span></div></div>
+      <button class="close-btn" onclick="closeModal()">×</button>
     </div>
     <div class="modal-body">
-      <div class="f-group"><div class="f-label">Fin de pÃ©riode</div>
+      <div class="f-group"><div class="f-label">Fin de période</div>
         <input type="date" class="f-input" id="mEndDate" oninput="onEndChange()"/>
       </div>
       <div class="f-group"><div class="f-label">Directeur</div><div class="radio-row" id="mDirRow"></div></div>
       <div class="f-group"><div class="f-label">Type</div><div class="type-grid" id="mTypeGrid"></div></div>
       <div class="f-group"><div class="f-label">Note (optionnel)</div>
-        <input type="text" class="f-input" id="mNote" placeholder="Nom du chantier, raisonâ¦" maxlength="60"/>
+        <input type="text" class="f-input" id="mNote" placeholder="Nom du chantier, raison…" maxlength="60"/>
       </div>
-      <div class="f-group"><div class="f-label">RÃ©currence</div>
+      <div class="f-group"><div class="f-label">Récurrence</div>
         <div class="rec-row">
           <button class="rec-btn on" data-rec="none" onclick="setRec('none',this)">Aucune</button>
           <button class="rec-btn" data-rec="weekly" onclick="setRec('weekly',this)">Hebdo.</button>
-          <button class="rec-btn" data-rec="until" onclick="setRec('until',this)">Jusqu'auâ¦</button>
+          <button class="rec-btn" data-rec="until" onclick="setRec('until',this)">Jusqu'au…</button>
         </div>
         <div id="recWkOpts" class="rec-extra" style="display:none">
-          RÃ©pÃ©ter <input type="number" id="recWeeks" value="4" min="1" max="52" style="width:52px;padding:4px 6px;border:1.5px solid var(--border);border-radius:4px;font-size:12px"> semaines
+          Répéter <input type="number" id="recWeeks" value="4" min="1" max="52" style="width:52px;padding:4px 6px;border:1.5px solid var(--border);border-radius:4px;font-size:12px"> semaines
         </div>
         <div id="recUntilOpts" style="display:none;margin-top:7px">
           <input type="date" class="f-input" id="recUntilDate"/>
@@ -274,7 +274,7 @@ input[type=color]{width:34px;height:34px;border:1.5px solid var(--border);border
       </div>
     </div>
     <div class="modal-ftr">
-      <button class="btn-del" onclick="clearCell()">â Effacer</button>
+      <button class="btn-del" onclick="clearCell()">✕ Effacer</button>
       <button class="btn-sec" onclick="closeModal()">Annuler</button>
       <button class="btn-pri" onclick="saveCell()">Enregistrer</button>
     </div>
@@ -285,24 +285,24 @@ input[type=color]{width:34px;height:34px;border:1.5px solid var(--border);border
 <div class="overlay" id="conflictOverlay">
   <div class="modal">
     <div class="modal-hdr">
-      <div><div class="modal-title">â  Conflits dÃ©tectÃ©s</div><div class="modal-sub" id="conflictSub"></div></div>
-      <button class="close-btn" onclick="cancelConflict()">Ã</button>
+      <div><div class="modal-title">⚠ Conflits détectés</div><div class="modal-sub" id="conflictSub"></div></div>
+      <button class="close-btn" onclick="cancelConflict()">×</button>
     </div>
     <div class="modal-body" id="conflictList"></div>
     <div class="modal-ftr">
       <button class="btn-sec" onclick="cancelConflict()">Annuler</button>
-      <button class="btn-pri" style="background:#D97706" onclick="confirmConflict()">Ãcraser quand mÃªme</button>
+      <button class="btn-pri" style="background:#D97706" onclick="confirmConflict()">Écraser quand même</button>
     </div>
   </div>
 </div>
 
-<!-- ParamÃ¨tres -->
+<!-- Paramètres -->
 <div class="overlay" id="settingsOverlay">
   <div class="modal settings-modal">
-    <div class="modal-hdr"><div class="modal-title">â ParamÃ¨tres</div><button class="close-btn" onclick="closeSettings()">Ã</button></div>
+    <div class="modal-hdr"><div class="modal-title">⚙ Paramètres</div><button class="close-btn" onclick="closeSettings()">×</button></div>
     <div class="settings-body" id="settingsBody"></div>
     <div class="modal-ftr">
-      <button class="btn-del" onclick="resetAll()">â  Tout rÃ©initialiser</button>
+      <button class="btn-del" onclick="resetAll()">⚠ Tout réinitialiser</button>
       <button class="btn-sec" onclick="closeSettings()">Annuler</button>
       <button class="btn-pri" onclick="saveSettings()">Sauvegarder</button>
     </div>
@@ -312,461 +312,12 @@ input[type=color]{width:34px;height:34px;border:1.5px solid var(--border);border
 <div class="toast" id="toast"></div>
 
 <script>
-// ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-//  CHOK BÃTON â Planning d'Ã©quipe
-//  HÃ©bergÃ© sur GitHub Pages Â· API : Google Apps Script
-//  Fonctionne sur Chrome, Safari, Firefox, Edge, iOS, Android
-// ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-
-const VISIBLE_WEEKS = 5
-const DAYS       = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi']
-const DAYS_SHORT = ['Lun','Mar','Mer','Jeu','Ven','Sam']
-const TYPES = [
-  {v:'CHANTIER', label:'Chantier',  color:'director'},
-  {v:'ABSENT',   label:'Absent',    color:'#DC2626'},
-  {v:'FERIE',    label:'FÃ©riÃ©',     color:'#6B7280'},
-  {v:'FORMATION',label:'Formation', color:'#7C3AED'},
-  {v:'CONGES',   label:'CongÃ©s',    color:'#0891B2'},
-]
-const DEFAULT_DIRS = [
-  {id:'D1',name:'Christian',  color:'#1565C0'},
-  {id:'D2',name:'Ghislain',   color:'#2E7D32'},
-  {id:'D3',name:'Christopher',color:'#C62828'},
-]
-
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbyovrVtwNYaZhBnQewdHxfZhUSRvKEvWgOpmYTiZ2Sdx494FhusobScjWg-tdko93Nq/exec'
-
-let S = {cells:{}, chefs:[], dirs:[], sw:0, flt:'ALL', gasUrl: GAS_URL}
-
-// ââ Configuration au dÃ©marrage ââââââââââââââââââââââââââââ
-function initApp(){
-  document.getElementById('setup').classList.add('hidden')
-  loadAll().then(()=>initZoom())
-}
-
-function cleanUrl(raw){
-  return raw.trim()
-    .replace(/\/macros\/u\/\d+\/s\//,'/macros/s/')
-    .replace(/\/\d+\/exec$/,'/exec')
-    .split('?')[0]
-}
-
-function connectGAS(){
-  const raw = document.getElementById('setup-url').value
-  const url = cleanUrl(raw)
-  const err = document.getElementById('setup-err')
-  const btn = document.getElementById('setup-btn')
-  if(!url.startsWith('https://script.google.com/macros/s/')){
-    err.textContent = 'URL invalide. Elle doit commencer par https://script.google.com/macros/s/'
-    err.classList.add('show'); return
-  }
-  err.classList.remove('show')
-  btn.disabled = true; btn.textContent = 'Connexionâ¦'
-  S.gasUrl = url
-  gasCall('load').then(d=>{
-    localStorage.setItem('chok_gas_url', url)
-    document.getElementById('setup').classList.add('hidden')
-    applyData(d)
-    setInterval(silentRefresh, 60000)
-    btn.disabled=false; btn.textContent='Connecter le planning'
-  }).catch(()=>{
-    btn.disabled=false; btn.textContent='Connecter le planning'
-    err.textContent='Connexion Ã©chouÃ©e. VÃ©rifiez que le dÃ©ploiement est bien "Tout le monde" et rÃ©essayez.'
-    err.classList.add('show')
-  })
-}
-
-document.addEventListener('DOMContentLoaded',()=>{
-  const inp = document.getElementById('setup-url')
-  if(inp) inp.addEventListener('keydown', e=>{ if(e.key==='Enter') connectGAS() })
-})
-
-// ââ API : fetch() en prioritÃ©, JSONP en secours âââââââââââ
-// fetch() fonctionne depuis GitHub Pages (CORS autorisÃ© par GAS public)
-// JSONP prend le relais si fetch() est bloquÃ©
-async function gasCall(action, data){
-  const qs = '?action='+action+(data?'&data='+encodeURIComponent(JSON.stringify(data)):'')
-  const url = S.gasUrl + qs
-
-  // Tentative 1 : fetch()
-  try {
-    const ctrl = new AbortController()
-    const tid  = setTimeout(()=>ctrl.abort(), 20000)
-    const r    = await fetch(url, {signal:ctrl.signal, redirect:'follow'})
-    clearTimeout(tid)
-    if(!r.ok) throw new Error('HTTP '+r.status)
-    const text = await r.text()
-    const m = text.match(/^[^(]*\((.+)\)\s*;?\s*$/)
-    return JSON.parse(m ? m[1] : text)
-  } catch(e){
-    if(e.name==='AbortError') throw new Error('Timeout')
-    // fetch() Ã©chouÃ© â on tente JSONP
-  }
-
-  // Tentative 2 : JSONP (secours universel)
-  return new Promise((resolve, reject)=>{
-    const cb  = '_cb'+Date.now()+Math.random().toString(36).slice(2)
-    const s   = document.createElement('script')
-    const tid = setTimeout(()=>{ cleanup(); reject(new Error('Timeout')) }, 25000)
-    const cleanup = ()=>{ delete window[cb]; s.parentNode&&s.parentNode.removeChild(s) }
-    window[cb] = r=>{ clearTimeout(tid); cleanup(); resolve(r) }
-    s.onerror  = ()=>{ clearTimeout(tid); cleanup(); reject(new Error('Connexion refusÃ©e')) }
-    document.head.appendChild(s)
-    s.src = url+'&callback='+cb
-  })
-}
-
-// ââ Sync UI âââââââââââââââââââââââââââââââââââââââââââââââ
-function setSync(state){
-  const dot=document.getElementById('syncDot'), txt=document.getElementById('syncText'), bar=document.getElementById('loadbar')
-  dot.className='sync-dot'+(state!=='ok'?' '+state:'')
-  txt.textContent=state==='syncing'?'Syncâ¦':state==='err'?'Erreur':'â Synchro'
-  bar.classList.toggle('on',state==='syncing')
-}
-
-// ââ Chargement ââââââââââââââââââââââââââââââââââââââââââââ
-async function loadAll(){
-  setSync('syncing')
-  try {
-    const d = await gasCall('load')
-    applyData(d)
-    setInterval(silentRefresh, 60000)
-  } catch(e){
-    setSync('err')
-    toast('â  Erreur de chargement. VÃ©rifiez votre connexion.', true)
-    S.dirs=[...DEFAULT_DIRS]; S.chefs=[]; render()
-  }
-}
-
-function applyData(d){
-  S.cells = d.cells || {}
-  S.chefs = (d.chefs||[]).map(c=>({name:c.name, directorId:c.directorId||'D1'}))
-  S.dirs  = (d.config&&d.config.directors)||DEFAULT_DIRS
-  setSync('ok'); render()
-}
-
-async function silentRefresh(){
-  try { const d=await gasCall('load'); S.cells=d.cells||{}; renderTable() } catch(e){}
-}
-
-// ââ Date utils ââââââââââââââââââââââââââââââââââââââââââââ
-function monday(off=0){
-  const n=new Date(),day=n.getDay(),diff=day===0?-6:1-day
-  n.setHours(0,0,0,0); n.setDate(n.getDate()+diff+off*7); return n
-}
-function addDays(d,n){const r=new Date(d);r.setDate(r.getDate()+n);return r}
-function fmt(d){return d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'})}
-function isoDate(d){return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`}
-function parseIso(s){const[y,m,d]=s.split('-').map(Number);const dt=new Date(y,m-1,d);dt.setHours(0,0,0,0);return dt}
-function p(n){return String(n).padStart(2,'0')}
-function weekNum(d){
-  const t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()))
-  t.setUTCDate(t.getUTCDate()+4-(t.getUTCDay()||7))
-  return Math.ceil(((t-new Date(Date.UTC(t.getUTCFullYear(),0,1)))/86400000+1)/7)
-}
-function absWkIdx(off){const m=monday(off);return `${m.getFullYear()}${p(weekNum(m))}`}
-function absWkToMonday(idx){
-  const y=parseInt(idx.slice(0,4)),w=parseInt(idx.slice(4)),j4=new Date(y,0,4),s=new Date(j4)
-  s.setDate(j4.getDate()-(j4.getDay()||7)+1)
-  const r=new Date(s);r.setDate(s.getDate()+(w-1)*7);return r
-}
-function dateToAbsWk(d){return `${d.getFullYear()}${p(weekNum(d))}`}
-function dayIdx(d){const day=d.getDay();return day===0?6:day-1}
-
-// ââ Jours fÃ©riÃ©s ââââââââââââââââââââââââââââââââââââââââââ
-function easter(y){
-  const a=y%19,b=Math.floor(y/100),c=y%100,d=Math.floor(b/4),e=b%4
-  const f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3)
-  const h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4
-  const l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451)
-  return new Date(y,Math.floor((h+l-7*m+114)/31)-1,((h+l-7*m+114)%31)+1)
-}
-const HC={}
-function holidays(y){
-  if(HC[y])return HC[y]
-  const e=easter(y),ad=(d,n)=>{const r=new Date(d);r.setDate(r.getDate()+n);return r}
-  HC[y]={
-    [`${y}-01-01`]:"Jour de l'An",[isoDate(ad(e,1))]:"Lundi de PÃ¢ques",
-    [`${y}-05-01`]:"FÃªte du Travail",[`${y}-05-08`]:"Victoire 1945",
-    [isoDate(ad(e,39))]:"Ascension",[isoDate(ad(e,50))]:"Lundi de PentecÃ´te",
-    [`${y}-07-14`]:"FÃªte Nationale",[`${y}-08-15`]:"Assomption",
-    [`${y}-11-01`]:"Toussaint",[`${y}-11-11`]:"Armistice",[`${y}-12-25`]:"NoÃ«l"
-  }
-  return HC[y]
-}
-function getHoliday(d){return holidays(d.getFullYear())[isoDate(d)]||null}
-
-// ââ Cell key ââââââââââââââââââââââââââââââââââââââââââââââ
-function ck(w,d,c){return `w${w}_d${d}_c${c}`}
-function dirColor(id){const d=S.dirs.find(x=>x.id===id);return d?d.color:'#6B7280'}
-
-// ââ Render ââââââââââââââââââââââââââââââââââââââââââââââââ
-function render(){renderFilters();renderTable();updateHeader()}
-
-function updateHeader(){
-  const m0=monday(S.sw),m4=monday(S.sw+VISIBLE_WEEKS-1),end=addDays(m4,5)
-  const el=document.getElementById('weekRange')
-  if(el)el.textContent=`S${weekNum(m0)} â S${weekNum(m4)}  Â·  ${fmt(m0)} au ${fmt(end)}`
-}
-
-function renderFilters(){
-  S.dirs.forEach((d,i)=>{
-    const btn=document.getElementById(`fD${i+1}`),ldot=document.getElementById(`lD${i+1}`),lname=document.getElementById(`lD${i+1}n`)
-    if(btn){btn.textContent=d.name;btn.style.background=S.flt===d.id?d.color:'';btn.style.borderColor=S.flt===d.id?d.color:'';btn.style.color=S.flt===d.id?'#fff':'';btn.classList.toggle('on',S.flt===d.id)}
-    if(ldot)ldot.style.background=d.color
-    if(lname)lname.textContent=d.name
-  })
-  document.querySelector('[data-dir="ALL"]')?.classList.toggle('on',S.flt==='ALL')
-}
-
-function renderTable(){
-  const thead=document.getElementById('thead'),tbody=document.getElementById('tbody')
-  const todayIso=isoDate(new Date())
-
-  let th=`<tr><th class="th-week"></th>`
-  S.chefs.forEach((chef,ci)=>{
-    const dir=S.dirs.find(d=>d.id===chef.directorId)||S.dirs[0]
-    const dim=S.flt!=='ALL'&&chef.directorId!==S.flt
-    const parts=chef.name.split(' '),last=parts[0],first=parts.slice(1).join(' ')
-    th+=`<th class="th-chef${dim?' dim':''}" style="border-top-color:${dir?dir.color:'#999'}">
-      <div class="th-ln" title="${chef.name}">${last}</div>
-      <div class="th-fn" title="${chef.name}">${first}</div>
-    </th>`
-  })
-  th+='</tr>'; thead.innerHTML=th
-
-  let html=''
-  for(let wi=0;wi<VISIBLE_WEEKS;wi++){
-    const off=S.sw+wi,mon=monday(off),wn=weekNum(mon),wIdx=absWkIdx(off),end=addDays(mon,5)
-    html+=`<tr class="rw-wk"><td class="wk-lbl">S${wn} Â· ${fmt(mon)}â${fmt(end)}</td><td colspan="${S.chefs.length}"></td></tr>`
-    DAYS.forEach((dn,di)=>{
-      const date=addDays(mon,di),iso=isoDate(date),hol=getHoliday(date),isToday=iso===todayIso
-      html+=`<tr class="rw-day"><td class="day-cell${isToday?' today':''}"><div class="day-inner">
-        <div class="day-name${isToday?' today-txt':hol?' hol-txt':''}">${DAYS_SHORT[di]}</div>
-        <div class="day-date">${fmt(date)}</div>
-        ${hol?`<span class="hol-name">${hol}</span>`:''}
-      </div></td>`
-      S.chefs.forEach((chef,ci)=>{
-        const key=ck(wIdx,di,ci),cell=S.cells[key]
-        const dim=S.flt!=='ALL'&&chef.directorId!==S.flt
-        const eType=(!cell||!cell.type)&&hol?'FERIE_AUTO':(cell?cell.type:'')
-        const eNote=(!cell||!cell.type)&&hol?hol:(cell?cell.note:'')
-        let bg='#6B7280'
-        if(eType==='CHANTIER')       bg=dirColor(cell?.directorId||chef.directorId)
-        else if(eType==='ABSENT')    bg='#DC2626'
-        else if(eType==='CONGES')    bg='#0891B2'
-        else if(eType==='FORMATION') bg='#7C3AED'
-        else if(eType==='FERIE_AUTO')bg='#D97706'
-        html+=`<td class="cell${dim?' dim':''}${hol?' hol-bg':''}" data-w="${wIdx}" data-d="${di}" data-c="${ci}"
-          ${dim?'':' onmousedown="startDrag(event)" onmouseover="extDrag(event)" onclick="onCellClick(event)"'}>
-          ${eType
-            ?`<div class="ci-filled" style="background:${bg}"><div class="ci-type">${eType==='FERIE_AUTO'?'FÃRIÃ':eType}</div>${eNote?`<div class="ci-note">${eNote}</div>`:''}</div>`
-            :`<div class="ci-empty"></div>`}
-        </td>`
-      })
-      html+='</tr>'
-    })
-  }
-  tbody.innerHTML=html
-}
-
-// ââ Drag ââââââââââââââââââââââââââââââââââââââââââââââââââ
-let DG={on:false,ci:null,s:null,e:null,moved:false}
-function cellDate(td){const m=absWkToMonday(td.dataset.w),d=addDays(m,+td.dataset.d);d.setHours(0,0,0,0);return d}
-function startDrag(ev){ev.preventDefault();const td=ev.currentTarget;DG={on:true,ci:+td.dataset.c,s:cellDate(td),e:cellDate(td),moved:false};hlDrag()}
-function extDrag(ev){if(!DG.on)return;const td=ev.currentTarget;if(+td.dataset.c!==DG.ci)return;const d=cellDate(td);if(d.getTime()!==DG.e.getTime())DG.moved=true;DG.e=d;hlDrag()}
-function onCellClick(ev){if(!DG.moved){const td=ev.currentTarget;openModal(+td.dataset.c,DG.s,DG.e)}}
-function hlDrag(){
-  const s=new Date(Math.min(DG.s,DG.e)),e=new Date(Math.max(DG.s,DG.e))
-  document.querySelectorAll('.cell').forEach(td=>{
-    td.classList.remove('drag-hl')
-    if(+td.dataset.c!==DG.ci)return
-    const d=cellDate(td);if(d>=s&&d<=e)td.classList.add('drag-hl')
-  })
-}
-function clearDrag(){document.querySelectorAll('.cell.drag-hl').forEach(td=>td.classList.remove('drag-hl'))}
-document.addEventListener('mouseup',()=>{if(!DG.on)return;const m=DG.moved;DG.on=false;clearDrag();if(m)openModal(DG.ci,DG.s,DG.e)})
-document.addEventListener('mouseleave',()=>{if(DG.on){DG.on=false;clearDrag()}})
-
-// ââ Modal âââââââââââââââââââââââââââââââââââââââââââââââââ
-let MS={ci:null,s:null,e:null,type:'',dir:'D1',note:'',rec:'none'}
-function openModal(ci,startDate,endDate){
-  const chef=S.chefs[ci]
-  const s=new Date(Math.min(startDate,endDate));s.setHours(0,0,0,0)
-  const e=new Date(Math.max(startDate,endDate));e.setHours(0,0,0,0)
-  const key=ck(dateToAbsWk(s),dayIdx(s),ci),cell=S.cells[key]
-  MS={ci,s,e,type:cell?.type||'',dir:cell?.directorId||chef?.directorId||'D1',note:cell?.note||'',rec:'none'}
-  document.getElementById('mChef').textContent=chef?.name||'â'
-  document.getElementById('mStart').textContent=`Du ${fmt(s)} au`
-  document.getElementById('mEndDate').value=isoDate(e)
-  onEndChange()
-  document.getElementById('mDirRow').innerHTML=S.dirs.map(d=>
-    `<button class="radio-btn${MS.dir===d.id?' on':''}" style="${MS.dir===d.id?`background:${d.color};border-color:${d.color}`:`border-color:${d.color}`}" onclick="selDir('${d.id}',this,'${d.color}')">${d.name}</button>`
-  ).join('')
-  document.getElementById('mTypeGrid').innerHTML=TYPES.map(t=>{
-    const bg=t.color==='director'?dirColor(MS.dir):t.color,on=MS.type===t.v
-    return `<button class="type-btn${on?' on':''}" data-v="${t.v}" style="${on?`background:${bg};border-color:${bg}`:t.v==='CHANTIER'?`border-color:${bg}`:''}" onclick="selType('${t.v}',this,'${bg}')">${t.label}</button>`
-  }).join('')
-  document.getElementById('mNote').value=MS.note
-  document.querySelectorAll('.rec-btn').forEach(b=>b.classList.toggle('on',b.dataset.rec==='none'))
-  document.getElementById('recWkOpts').style.display='none'
-  document.getElementById('recUntilOpts').style.display='none'
-  document.getElementById('entryOverlay').classList.add('open')
-}
-function onEndChange(){
-  const v=document.getElementById('mEndDate').value;if(!v||!MS.s)return
-  MS.e=parseIso(v)
-  const diff=Math.round((MS.e-MS.s)/86400000)+1
-  document.getElementById('mDayCount').textContent=diff>1?`(${diff} jours)`:''
-}
-function selDir(id,btn,color){
-  MS.dir=id
-  document.querySelectorAll('#mDirRow .radio-btn').forEach(b=>{b.classList.remove('on');b.style.background='';b.style.borderColor=''})
-  btn.classList.add('on');btn.style.background=color;btn.style.borderColor=color
-  const cb=document.querySelector('#mTypeGrid .type-btn[data-v="CHANTIER"]')
-  if(cb){cb.style.borderColor=color;if(cb.classList.contains('on'))cb.style.background=color}
-}
-function selType(v,btn,color){
-  const ec=v==='CHANTIER'?dirColor(MS.dir):color;MS.type=v
-  document.querySelectorAll('#mTypeGrid .type-btn').forEach(b=>{
-    b.classList.remove('on');b.style.background=''
-    b.dataset.v==='CHANTIER'?b.style.borderColor=dirColor(MS.dir):b.style.borderColor=''
-  })
-  btn.classList.add('on');btn.style.background=ec;btn.style.borderColor=ec
-}
-function setRec(type,btn){
-  document.querySelectorAll('.rec-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');MS.rec=type
-  document.getElementById('recWkOpts').style.display=type==='weekly'?'flex':'none'
-  document.getElementById('recUntilOpts').style.display=type==='until'?'block':'none'
-}
-function closeModal(){document.getElementById('entryOverlay').classList.remove('open')}
-function closeSettings(){document.getElementById('settingsOverlay').classList.remove('open')}
-function clearCell(){MS.type='';doSave(buildDates(),'')}
-
-function saveCell(){
-  const note=document.getElementById('mNote').value.trim()
-  const ev=document.getElementById('mEndDate').value;if(ev)MS.e=parseIso(ev)
-  const s=new Date(Math.min(MS.s,MS.e));s.setHours(0,0,0,0)
-  const e=new Date(Math.max(MS.s,MS.e));e.setHours(0,0,0,0)
-  MS.s=s;MS.e=e
-  const dates=buildDates()
-  if(!MS.type){doSave(dates,note);return}
-  checkConflicts(dates,note)
-}
-
-function buildDates(){
-  const dates=[],cur=new Date(MS.s)
-  while(cur<=MS.e){if(cur.getDay()!==0)dates.push(new Date(cur));cur.setDate(cur.getDate()+1)}
-  if(MS.rec==='weekly'){
-    const w=Math.max(1,parseInt(document.getElementById('recWeeks')?.value)||4),span=MS.e-MS.s
-    for(let i=1;i<w;i++){const rs=new Date(MS.s.getTime()+i*7*86400000),re=new Date(rs.getTime()+span),c=new Date(rs);while(c<=re){if(c.getDay()!==0)dates.push(new Date(c));c.setDate(c.getDate()+1)}}
-  } else if(MS.rec==='until'){
-    const str=document.getElementById('recUntilDate')?.value
-    if(str){const until=parseIso(str),span=MS.e-MS.s;let rs=new Date(MS.s.getTime()+7*86400000);while(rs<=until){const re=new Date(Math.min(rs.getTime()+span,until.getTime())),c=new Date(rs);while(c<=re){if(c.getDay()!==0)dates.push(new Date(c));c.setDate(c.getDate()+1)}rs=new Date(rs.getTime()+7*86400000)}}
-  }
-  return dates
-}
-
-// ââ Conflits ââââââââââââââââââââââââââââââââââââââââââââââ
-let _pending=null
-function checkConflicts(dates,note){
-  const conflicts=dates.filter(d=>{const c=S.cells[ck(dateToAbsWk(d),dayIdx(d),MS.ci)];return c&&c.type&&(c.type!==MS.type||c.note!==note)})
-  if(!conflicts.length){doSave(dates,note);return}
-  _pending={dates,note}
-  document.getElementById('conflictSub').textContent=`${conflicts.length} conflit${conflicts.length>1?'s':''} â ${S.chefs[MS.ci]?.name}`
-  document.getElementById('conflictList').innerHTML=conflicts.map(d=>{
-    const c=S.cells[ck(dateToAbsWk(d),dayIdx(d),MS.ci)]
-    const bg=c.type==='CHANTIER'?dirColor(c.directorId):(TYPES.find(x=>x.v===c.type)?.color||'#6B7280')
-    return `<div class="conflict-item"><span style="color:var(--text2);min-width:70px">${DAYS[dayIdx(d)]} ${fmt(d)}</span><span class="c-badge" style="background:${bg}">${c.type}</span>${c.note?`<span style="color:var(--text3);font-size:11px">${c.note}</span>`:''}</div>`
-  }).join('')
-  document.getElementById('conflictOverlay').classList.add('open')
-}
-function cancelConflict(){document.getElementById('conflictOverlay').classList.remove('open');_pending=null}
-function confirmConflict(){document.getElementById('conflictOverlay').classList.remove('open');if(_pending){doSave(_pending.dates,_pending.note);_pending=null}}
-
-// ââ Sauvegarde ââââââââââââââââââââââââââââââââââââââââââââ
-async function doSave(dates,note){
-  const entries=dates.map(d=>({key:ck(dateToAbsWk(d),dayIdx(d),MS.ci),type:MS.type||'',note,directorId:MS.dir}))
-  entries.forEach(({key,type,note,directorId})=>{
-    if(type)S.cells[key]={type,note,directorId,modifiedAt:new Date().toISOString()}
-    else delete S.cells[key]
-  })
-  renderTable();closeModal();setSync('syncing')
-  const savedType=MS.type,cnt=dates.length
-  try {
-    await gasCall('save',entries);setSync('ok')
-    toast(savedType?`â ${cnt} jour${cnt>1?'s':''} enregistrÃ©${cnt>1?'s':''}`:'â EffacÃ©')
-  } catch(e){setSync('err');toast('â  Erreur sauvegarde',true)}
-}
-
-// ââ ParamÃ¨tres ââââââââââââââââââââââââââââââââââââââââââââ
-function openSettings(){
-  const currentUrl=localStorage.getItem('chok_gas_url')||''
-  document.getElementById('settingsBody').innerHTML=`
-    <div class="s-section">
-      <div class="s-title">URL Apps Script</div>
-      <div class="s-row"><input type="text" class="f-input" id="cfg_url" value="${currentUrl}" style="font-size:11px;flex:1"></div>
-      <div style="font-size:11px;color:var(--text3)">Modifiez si vous avez redeployÃ© Apps Script.</div>
-    </div>
-    <div class="s-section">
-      <div class="s-title">Directeurs</div>
-      ${S.dirs.map(d=>`<div class="s-row"><input type="color" id="cfg_color_${d.id}" value="${d.color}"><input type="text" class="f-input" id="cfg_name_${d.id}" value="${d.name}" style="flex:1"></div>`).join('')}
-    </div>
-    <div class="s-section">
-      <div class="s-title">Chefs d'Ã©quipe (${S.chefs.length})</div>
-      <div class="chefs-grid">
-        ${S.chefs.map((c,i)=>`<div class="chef-row">
-          <input type="text" class="f-input" id="cn_${i}" value="${c.name}" style="font-size:12px;padding:5px 7px">
-          <select id="cd_${i}">${S.dirs.map(d=>`<option value="${d.id}"${c.directorId===d.id?' selected':''}>${d.name}</option>`).join('')}</select>
-        </div>`).join('')}
-      </div>
-    </div>`
-  document.getElementById('settingsOverlay').classList.add('open')
-}
-
-async function saveSettings(){
-  const newUrl=cleanUrl(document.getElementById('cfg_url')?.value||'')
-  if(newUrl&&newUrl!==S.gasUrl){localStorage.setItem('chok_gas_url',newUrl);S.gasUrl=newUrl}
-  const nd=S.dirs.map(d=>({...d,name:document.getElementById(`cfg_name_${d.id}`)?.value||d.name,color:document.getElementById(`cfg_color_${d.id}`)?.value||d.color}))
-  const nc=S.chefs.map((c,i)=>({...c,name:document.getElementById(`cn_${i}`)?.value||c.name,directorId:document.getElementById(`cd_${i}`)?.value||c.directorId}))
-  S.dirs=nd;S.chefs=nc;closeSettings();render();setSync('syncing')
-  try{await gasCall('saveConfig',{directors:nd,chefs:nc});setSync('ok');toast('â Configuration sauvegardÃ©e')}
-  catch(e){setSync('err');toast('â  Erreur configuration',true)}
-}
-
-async function resetAll(){
-  if(!confirm('RÃ©initialiser TOUTES les donnÃ©es du planning ?\nCette action est irrÃ©versible.'))return
-  setSync('syncing')
-  try{await gasCall('reset');setSync('ok');loadAll();toast('â Planning rÃ©initialisÃ©')}
-  catch(e){setSync('err');toast('â  Erreur reset',true)}
-}
-
-// ââ Zoom ââââââââââââââââââââââââââââââââââââââââââââââââââ
-function setZoom(z){
-  S.zoom=z
-  const tbl=document.querySelector('.tbl-scroll table')
-  if(tbl) tbl.style.zoom=z
-  localStorage.setItem('chok_zoom',z)
-  document.querySelectorAll('.zoom-btn').forEach(b=>b.classList.toggle('on', parseFloat(b.dataset.z)===z))
-}
-function initZoom(){
-  const saved=parseFloat(localStorage.getItem('chok_zoom')||'1')
-  setZoom(saved)
-}
-
-// ââ Navigation ââââââââââââââââââââââââââââââââââââââââââââ
-function shift(n){S.sw+=n;render()}
-function goToday(){S.sw=0;render()}
-function setFilter(dir,btn){S.flt=dir;document.querySelectorAll('.flt').forEach(b=>b.classList.remove('on'));btn.classList.add('on');render()}
-
-// ââ Toast âââââââââââââââââââââââââââââââââââââââââââââââââ
-function toast(msg,isErr=false){
-  const t=document.getElementById('toast');t.textContent=msg
-  t.style.background=isErr?'#DC2626':'#1C2333';t.classList.add('show')
-  setTimeout(()=>t.classList.remove('show'),2800)
-}
-
-window.onload=initApp
+(function(){
+var _b='Ci8vIOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkAovLyAgQ0hPSyBCw4lUT04g4oCUIFBsYW5uaW5nIGQnw6lxdWlwZQovLyAgSMOpYmVyZ8OpIHN1ciBHaXRIdWIgUGFnZXMgwrcgQVBJIDogR29vZ2xlIEFwcHMgU2NyaXB0Ci8vICBGb25jdGlvbm5lIHN1ciBDaHJvbWUsIFNhZmFyaSwgRmlyZWZveCwgRWRnZSwgaU9TLCBBbmRyb2lkCi8vIOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkAoKY29uc3QgVklTSUJMRV9XRUVLUyA9IDUKY29uc3QgREFZUyAgICAgICA9IFsnTHVuZGknLCdNYXJkaScsJ01lcmNyZWRpJywnSmV1ZGknLCdWZW5kcmVkaScsJ1NhbWVkaSddCmNvbnN0IERBWVNfU0hPUlQgPSBbJ0x1bicsJ01hcicsJ01lcicsJ0pldScsJ1ZlbicsJ1NhbSddCmNvbnN0IFRZUEVTID0gWwogIHt2OidDSEFOVElFUicsIGxhYmVsOidDaGFudGllcicsICBjb2xvcjonZGlyZWN0b3InfSwKICB7djonQUJTRU5UJywgICBsYWJlbDonQWJzZW50JywgICAgY29sb3I6JyNEQzI2MjYnfSwKICB7djonRkVSSUUnLCAgICBsYWJlbDonRsOpcmnDqScsICAgICBjb2xvcjonIzZCNzI4MCd9LAogIHt2OidGT1JNQVRJT04nLGxhYmVsOidGb3JtYXRpb24nLCBjb2xvcjonIzdDM0FFRCd9LAogIHt2OidDT05HRVMnLCAgIGxhYmVsOidDb25nw6lzJywgICAgY29sb3I6JyMwODkxQjInfSwKXQpjb25zdCBERUZBVUxUX0RJUlMgPSBbCiAge2lkOidEMScsbmFtZTonQ2hyaXN0aWFuJywgIGNvbG9yOicjMTU2NUMwJ30sCiAge2lkOidEMicsbmFtZTonR2hpc2xhaW4nLCAgIGNvbG9yOicjMkU3RDMyJ30sCiAge2lkOidEMycsbmFtZTonQ2hyaXN0b3BoZXInLGNvbG9yOicjQzYyODI4J30sCl0KCmNvbnN0IEdBU19VUkwgPSAnaHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J5b3ZyVnR3TllhWmhCblFld2RIeGZaaFVTUnZLRXZXZ09wbVlUaVoyU2R4NDk0Rmh1c29iU2NqV2ctdGRrbzkzTnEvZXhlYycKCmxldCBTID0ge2NlbGxzOnt9LCBjaGVmczpbXSwgZGlyczpbXSwgc3c6MCwgZmx0OidBTEwnLCBnYXNVcmw6IEdBU19VUkx9CgovLyDilIDilIAgQ29uZmlndXJhdGlvbiBhdSBkw6ltYXJyYWdlIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgApmdW5jdGlvbiBpbml0QXBwKCl7CiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3NldHVwJykuY2xhc3NMaXN0LmFkZCgnaGlkZGVuJykKICBsb2FkQWxsKCkudGhlbigoKT0+aW5pdFpvb20oKSkKfQoKZnVuY3Rpb24gY2xlYW5VcmwocmF3KXsKICByZXR1cm4gcmF3LnRyaW0oKQogICAgLnJlcGxhY2UoL1wvbWFjcm9zXC91XC9cZCtcL3NcLy8sJy9tYWNyb3Mvcy8nKQogICAgLnJlcGxhY2UoL1wvXGQrXC9leGVjJC8sJy9leGVjJykKICAgIC5zcGxpdCgnPycpWzBdCn0KCmZ1bmN0aW9uIGNvbm5lY3RHQVMoKXsKICBjb25zdCByYXcgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnc2V0dXAtdXJsJykudmFsdWUKICBjb25zdCB1cmwgPSBjbGVhblVybChyYXcpCiAgY29uc3QgZXJyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3NldHVwLWVycicpCiAgY29uc3QgYnRuID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3NldHVwLWJ0bicpCiAgaWYoIXVybC5zdGFydHNXaXRoKCdodHRwczovL3NjcmlwdC5nb29nbGUuY29tL21hY3Jvcy9zLycpKXsKICAgIGVyci50ZXh0Q29udGVudCA9ICdVUkwgaW52YWxpZGUuIEVsbGUgZG9pdCBjb21tZW5jZXIgcGFyIGh0dHBzOi8vc2NyaXB0Lmdvb2dsZS5jb20vbWFjcm9zL3MvJwogICAgZXJyLmNsYXNzTGlzdC5hZGQoJ3Nob3cnKTsgcmV0dXJuCiAgfQogIGVyci5jbGFzc0xpc3QucmVtb3ZlKCdzaG93JykKICBidG4uZGlzYWJsZWQgPSB0cnVlOyBidG4udGV4dENvbnRlbnQgPSAnQ29ubmV4aW9u4oCmJwogIFMuZ2FzVXJsID0gdXJsCiAgZ2FzQ2FsbCgnbG9hZCcpLnRoZW4oZD0+ewogICAgbG9jYWxTdG9yYWdlLnNldEl0ZW0oJ2Nob2tfZ2FzX3VybCcsIHVybCkKICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdzZXR1cCcpLmNsYXNzTGlzdC5hZGQoJ2hpZGRlbicpCiAgICBhcHBseURhdGEoZCkKICAgIHNldEludGVydmFsKHNpbGVudFJlZnJlc2gsIDYwMDAwKQogICAgYnRuLmRpc2FibGVkPWZhbHNlOyBidG4udGV4dENvbnRlbnQ9J0Nvbm5lY3RlciBsZSBwbGFubmluZycKICB9KS5jYXRjaCgoKT0+ewogICAgYnRuLmRpc2FibGVkPWZhbHNlOyBidG4udGV4dENvbnRlbnQ9J0Nvbm5lY3RlciBsZSBwbGFubmluZycKICAgIGVyci50ZXh0Q29udGVudD0nQ29ubmV4aW9uIMOpY2hvdcOpZS4gVsOpcmlmaWV6IHF1ZSBsZSBkw6lwbG9pZW1lbnQgZXN0IGJpZW4gIlRvdXQgbGUgbW9uZGUiIGV0IHLDqWVzc2F5ZXouJwogICAgZXJyLmNsYXNzTGlzdC5hZGQoJ3Nob3cnKQogIH0pCn0KCmRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ0RPTUNvbnRlbnRMb2FkZWQnLCgpPT57CiAgY29uc3QgaW5wID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3NldHVwLXVybCcpCiAgaWYoaW5wKSBpbnAuYWRkRXZlbnRMaXN0ZW5lcigna2V5ZG93bicsIGU9PnsgaWYoZS5rZXk9PT0nRW50ZXInKSBjb25uZWN0R0FTKCkgfSkKfSkKCi8vIOKUgOKUgCBBUEkgOiBmZXRjaCgpIGVuIHByaW9yaXTDqSwgSlNPTlAgZW4gc2Vjb3VycyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKLy8gZmV0Y2goKSBmb25jdGlvbm5lIGRlcHVpcyBHaXRIdWIgUGFnZXMgKENPUlMgYXV0b3Jpc8OpIHBhciBHQVMgcHVibGljKQovLyBKU09OUCBwcmVuZCBsZSByZWxhaXMgc2kgZmV0Y2goKSBlc3QgYmxvcXXDqQphc3luYyBmdW5jdGlvbiBnYXNDYWxsKGFjdGlvbiwgZGF0YSl7CiAgY29uc3QgcXMgPSAnP2FjdGlvbj0nK2FjdGlvbisoZGF0YT8nJmRhdGE9JytlbmNvZGVVUklDb21wb25lbnQoSlNPTi5zdHJpbmdpZnkoZGF0YSkpOicnKQogIGNvbnN0IHVybCA9IFMuZ2FzVXJsICsgcXMKCiAgLy8gVGVudGF0aXZlIDEgOiBmZXRjaCgpCiAgdHJ5IHsKICAgIGNvbnN0IGN0cmwgPSBuZXcgQWJvcnRDb250cm9sbGVyKCkKICAgIGNvbnN0IHRpZCAgPSBzZXRUaW1lb3V0KCgpPT5jdHJsLmFib3J0KCksIDIwMDAwKQogICAgY29uc3QgciAgICA9IGF3YWl0IGZldGNoKHVybCwge3NpZ25hbDpjdHJsLnNpZ25hbCwgcmVkaXJlY3Q6J2ZvbGxvdyd9KQogICAgY2xlYXJUaW1lb3V0KHRpZCkKICAgIGlmKCFyLm9rKSB0aHJvdyBuZXcgRXJyb3IoJ0hUVFAgJytyLnN0YXR1cykKICAgIGNvbnN0IHRleHQgPSBhd2FpdCByLnRleHQoKQogICAgY29uc3QgbSA9IHRleHQubWF0Y2goL15bXihdKlwoKC4rKVwpXHMqOz9ccyokLykKICAgIHJldHVybiBKU09OLnBhcnNlKG0gPyBtWzFdIDogdGV4dCkKICB9IGNhdGNoKGUpewogICAgaWYoZS5uYW1lPT09J0Fib3J0RXJyb3InKSB0aHJvdyBuZXcgRXJyb3IoJ1RpbWVvdXQnKQogICAgLy8gZmV0Y2goKSDDqWNob3XDqSDihpIgb24gdGVudGUgSlNPTlAKICB9CgogIC8vIFRlbnRhdGl2ZSAyIDogSlNPTlAgKHNlY291cnMgdW5pdmVyc2VsKQogIHJldHVybiBuZXcgUHJvbWlzZSgocmVzb2x2ZSwgcmVqZWN0KT0+ewogICAgY29uc3QgY2IgID0gJ19jYicrRGF0ZS5ub3coKStNYXRoLnJhbmRvbSgpLnRvU3RyaW5nKDM2KS5zbGljZSgyKQogICAgY29uc3QgcyAgID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnc2NyaXB0JykKICAgIGNvbnN0IHRpZCA9IHNldFRpbWVvdXQoKCk9PnsgY2xlYW51cCgpOyByZWplY3QobmV3IEVycm9yKCdUaW1lb3V0JykpIH0sIDI1MDAwKQogICAgY29uc3QgY2xlYW51cCA9ICgpPT57IGRlbGV0ZSB3aW5kb3dbY2JdOyBzLnBhcmVudE5vZGUmJnMucGFyZW50Tm9kZS5yZW1vdmVDaGlsZChzKSB9CiAgICB3aW5kb3dbY2JdID0gcj0+eyBjbGVhclRpbWVvdXQodGlkKTsgY2xlYW51cCgpOyByZXNvbHZlKHIpIH0KICAgIHMub25lcnJvciAgPSAoKT0+eyBjbGVhclRpbWVvdXQodGlkKTsgY2xlYW51cCgpOyByZWplY3QobmV3IEVycm9yKCdDb25uZXhpb24gcmVmdXPDqWUnKSkgfQogICAgZG9jdW1lbnQuaGVhZC5hcHBlbmRDaGlsZChzKQogICAgcy5zcmMgPSB1cmwrJyZjYWxsYmFjaz0nK2NiCiAgfSkKfQoKLy8g4pSA4pSAIFN5bmMgVUkg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACmZ1bmN0aW9uIHNldFN5bmMoc3RhdGUpewogIGNvbnN0IGRvdD1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnc3luY0RvdCcpLCB0eHQ9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3N5bmNUZXh0JyksIGJhcj1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbG9hZGJhcicpCiAgZG90LmNsYXNzTmFtZT0nc3luYy1kb3QnKyhzdGF0ZSE9PSdvayc/JyAnK3N0YXRlOicnKQogIHR4dC50ZXh0Q29udGVudD1zdGF0ZT09PSdzeW5jaW5nJz8nU3luY+KApic6c3RhdGU9PT0nZXJyJz8nRXJyZXVyJzon4pyTIFN5bmNocm8nCiAgYmFyLmNsYXNzTGlzdC50b2dnbGUoJ29uJyxzdGF0ZT09PSdzeW5jaW5nJykKfQoKLy8g4pSA4pSAIENoYXJnZW1lbnQg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACmFzeW5jIGZ1bmN0aW9uIGxvYWRBbGwoKXsKICBzZXRTeW5jKCdzeW5jaW5nJykKICB0cnkgewogICAgY29uc3QgZCA9IGF3YWl0IGdhc0NhbGwoJ2xvYWQnKQogICAgYXBwbHlEYXRhKGQpCiAgICBzZXRJbnRlcnZhbChzaWxlbnRSZWZyZXNoLCA2MDAwMCkKICB9IGNhdGNoKGUpewogICAgc2V0U3luYygnZXJyJykKICAgIHRvYXN0KCfimqAgRXJyZXVyIGRlIGNoYXJnZW1lbnQuIFbDqXJpZmlleiB2b3RyZSBjb25uZXhpb24uJywgdHJ1ZSkKICAgIFMuZGlycz1bLi4uREVGQVVMVF9ESVJTXTsgUy5jaGVmcz1bXTsgcmVuZGVyKCkKICB9Cn0KCmZ1bmN0aW9uIGFwcGx5RGF0YShkKXsKICBTLmNlbGxzID0gZC5jZWxscyB8fCB7fQogIFMuY2hlZnMgPSAoZC5jaGVmc3x8W10pLm1hcChjPT4oe25hbWU6Yy5uYW1lLCBkaXJlY3RvcklkOmMuZGlyZWN0b3JJZHx8J0QxJ30pKQogIFMuZGlycyAgPSAoZC5jb25maWcmJmQuY29uZmlnLmRpcmVjdG9ycyl8fERFRkFVTFRfRElSUwogIHNldFN5bmMoJ29rJyk7IHJlbmRlcigpCn0KCmFzeW5jIGZ1bmN0aW9uIHNpbGVudFJlZnJlc2goKXsKICB0cnkgeyBjb25zdCBkPWF3YWl0IGdhc0NhbGwoJ2xvYWQnKTsgUy5jZWxscz1kLmNlbGxzfHx7fTsgcmVuZGVyVGFibGUoKSB9IGNhdGNoKGUpe30KfQoKLy8g4pSA4pSAIERhdGUgdXRpbHMg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACmZ1bmN0aW9uIG1vbmRheShvZmY9MCl7CiAgY29uc3Qgbj1uZXcgRGF0ZSgpLGRheT1uLmdldERheSgpLGRpZmY9ZGF5PT09MD8tNjoxLWRheQogIG4uc2V0SG91cnMoMCwwLDAsMCk7IG4uc2V0RGF0ZShuLmdldERhdGUoKStkaWZmK29mZio3KTsgcmV0dXJuIG4KfQpmdW5jdGlvbiBhZGREYXlzKGQsbil7Y29uc3Qgcj1uZXcgRGF0ZShkKTtyLnNldERhdGUoci5nZXREYXRlKCkrbik7cmV0dXJuIHJ9CmZ1bmN0aW9uIGZtdChkKXtyZXR1cm4gZC50b0xvY2FsZURhdGVTdHJpbmcoJ2ZyLUZSJyx7ZGF5OicyLWRpZ2l0Jyxtb250aDonMi1kaWdpdCd9KX0KZnVuY3Rpb24gaXNvRGF0ZShkKXtyZXR1cm4gYCR7ZC5nZXRGdWxsWWVhcigpfS0ke3AoZC5nZXRNb250aCgpKzEpfS0ke3AoZC5nZXREYXRlKCkpfWB9CmZ1bmN0aW9uIHBhcnNlSXNvKHMpe2NvbnN0W3ksbSxkXT1zLnNwbGl0KCctJykubWFwKE51bWJlcik7Y29uc3QgZHQ9bmV3IERhdGUoeSxtLTEsZCk7ZHQuc2V0SG91cnMoMCwwLDAsMCk7cmV0dXJuIGR0fQpmdW5jdGlvbiBwKG4pe3JldHVybiBTdHJpbmcobikucGFkU3RhcnQoMiwnMCcpfQpmdW5jdGlvbiB3ZWVrTnVtKGQpewogIGNvbnN0IHQ9bmV3IERhdGUoRGF0ZS5VVEMoZC5nZXRGdWxsWWVhcigpLGQuZ2V0TW9udGgoKSxkLmdldERhdGUoKSkpCiAgdC5zZXRVVENEYXRlKHQuZ2V0VVRDRGF0ZSgpKzQtKHQuZ2V0VVRDRGF5KCl8fDcpKQogIHJldHVybiBNYXRoLmNlaWwoKCh0LW5ldyBEYXRlKERhdGUuVVRDKHQuZ2V0VVRDRnVsbFllYXIoKSwwLDEpKSkvODY0MDAwMDArMSkvNykKfQpmdW5jdGlvbiBhYnNXa0lkeChvZmYpe2NvbnN0IG09bW9uZGF5KG9mZik7cmV0dXJuIGAke20uZ2V0RnVsbFllYXIoKX0ke3Aod2Vla051bShtKSl9YH0KZnVuY3Rpb24gYWJzV2tUb01vbmRheShpZHgpewogIGNvbnN0IHk9cGFyc2VJbnQoaWR4LnNsaWNlKDAsNCkpLHc9cGFyc2VJbnQoaWR4LnNsaWNlKDQpKSxqND1uZXcgRGF0ZSh5LDAsNCkscz1uZXcgRGF0ZShqNCkKICBzLnNldERhdGUoajQuZ2V0RGF0ZSgpLShqNC5nZXREYXkoKXx8NykrMSkKICBjb25zdCByPW5ldyBEYXRlKHMpO3Iuc2V0RGF0ZShzLmdldERhdGUoKSsody0xKSo3KTtyZXR1cm4gcgp9CmZ1bmN0aW9uIGRhdGVUb0Fic1drKGQpe3JldHVybiBgJHtkLmdldEZ1bGxZZWFyKCl9JHtwKHdlZWtOdW0oZCkpfWB9CmZ1bmN0aW9uIGRheUlkeChkKXtjb25zdCBkYXk9ZC5nZXREYXkoKTtyZXR1cm4gZGF5PT09MD82OmRheS0xfQoKLy8g4pSA4pSAIEpvdXJzIGbDqXJpw6lzIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgApmdW5jdGlvbiBlYXN0ZXIoeSl7CiAgY29uc3QgYT15JTE5LGI9TWF0aC5mbG9vcih5LzEwMCksYz15JTEwMCxkPU1hdGguZmxvb3IoYi80KSxlPWIlNAogIGNvbnN0IGY9TWF0aC5mbG9vcigoYis4KS8yNSksZz1NYXRoLmZsb29yKChiLWYrMSkvMykKICBjb25zdCBoPSgxOSphK2ItZC1nKzE1KSUzMCxpPU1hdGguZmxvb3IoYy80KSxrPWMlNAogIGNvbnN0IGw9KDMyKzIqZSsyKmktaC1rKSU3LG09TWF0aC5mbG9vcigoYSsxMSpoKzIyKmwpLzQ1MSkKICByZXR1cm4gbmV3IERhdGUoeSxNYXRoLmZsb29yKChoK2wtNyptKzExNCkvMzEpLTEsKChoK2wtNyptKzExNCklMzEpKzEpCn0KY29uc3QgSEM9e30KZnVuY3Rpb24gaG9saWRheXMoeSl7CiAgaWYoSENbeV0pcmV0dXJuIEhDW3ldCiAgY29uc3QgZT1lYXN0ZXIoeSksYWQ9KGQsbik9Pntjb25zdCByPW5ldyBEYXRlKGQpO3Iuc2V0RGF0ZShyLmdldERhdGUoKStuKTtyZXR1cm4gcn0KICBIQ1t5XT17CiAgICBbYCR7eX0tMDEtMDFgXToiSm91ciBkZSBsJ0FuIixbaXNvRGF0ZShhZChlLDEpKV06Ikx1bmRpIGRlIFDDonF1ZXMiLAogICAgW2Ake3l9LTA1LTAxYF06IkbDqnRlIGR1IFRyYXZhaWwiLFtgJHt5fS0wNS0wOGBdOiJWaWN0b2lyZSAxOTQ1IiwKICAgIFtpc29EYXRlKGFkKGUsMzkpKV06IkFzY2Vuc2lvbiIsW2lzb0RhdGUoYWQoZSw1MCkpXToiTHVuZGkgZGUgUGVudGVjw7R0ZSIsCiAgICBbYCR7eX0tMDctMTRgXToiRsOqdGUgTmF0aW9uYWxlIixbYCR7eX0tMDgtMTVgXToiQXNzb21wdGlvbiIsCiAgICBbYCR7eX0tMTEtMDFgXToiVG91c3NhaW50IixbYCR7eX0tMTEtMTFgXToiQXJtaXN0aWNlIixbYCR7eX0tMTItMjVgXToiTm/Dq2wiCiAgfQogIHJldHVybiBIQ1t5XQp9CmZ1bmN0aW9uIGdldEhvbGlkYXkoZCl7cmV0dXJuIGhvbGlkYXlzKGQuZ2V0RnVsbFllYXIoKSlbaXNvRGF0ZShkKV18fG51bGx9CgovLyDilIDilIAgQ2VsbCBrZXkg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACmZ1bmN0aW9uIGNrKHcsZCxjKXtyZXR1cm4gYHcke3d9X2Qke2R9X2Mke2N9YH0KZnVuY3Rpb24gZGlyQ29sb3IoaWQpe2NvbnN0IGQ9Uy5kaXJzLmZpbmQoeD0+eC5pZD09PWlkKTtyZXR1cm4gZD9kLmNvbG9yOicjNkI3MjgwJ30KCi8vIOKUgOKUgCBSZW5kZXIg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACmZ1bmN0aW9uIHJlbmRlcigpe3JlbmRlckZpbHRlcnMoKTtyZW5kZXJUYWJsZSgpO3VwZGF0ZUhlYWRlcigpfQoKZnVuY3Rpb24gdXBkYXRlSGVhZGVyKCl7CiAgY29uc3QgbTA9bW9uZGF5KFMuc3cpLG00PW1vbmRheShTLnN3K1ZJU0lCTEVfV0VFS1MtMSksZW5kPWFkZERheXMobTQsNSkKICBjb25zdCBlbD1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnd2Vla1JhbmdlJykKICBpZihlbCllbC50ZXh0Q29udGVudD1gUyR7d2Vla051bShtMCl9IOKAkyBTJHt3ZWVrTnVtKG00KX0gIMK3ICAke2ZtdChtMCl9IGF1ICR7Zm10KGVuZCl9YAp9CgpmdW5jdGlvbiByZW5kZXJGaWx0ZXJzKCl7CiAgUy5kaXJzLmZvckVhY2goKGQsaSk9PnsKICAgIGNvbnN0IGJ0bj1kb2N1bWVudC5nZXRFbGVtZW50QnlJZChgZkQke2krMX1gKSxsZG90PWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKGBsRCR7aSsxfWApLGxuYW1lPWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKGBsRCR7aSsxfW5gKQogICAgaWYoYnRuKXtidG4udGV4dENvbnRlbnQ9ZC5uYW1lO2J0bi5zdHlsZS5iYWNrZ3JvdW5kPVMuZmx0PT09ZC5pZD9kLmNvbG9yOicnO2J0bi5zdHlsZS5ib3JkZXJDb2xvcj1TLmZsdD09PWQuaWQ/ZC5jb2xvcjonJztidG4uc3R5bGUuY29sb3I9Uy5mbHQ9PT1kLmlkPycjZmZmJzonJztidG4uY2xhc3NMaXN0LnRvZ2dsZSgnb24nLFMuZmx0PT09ZC5pZCl9CiAgICBpZihsZG90KWxkb3Quc3R5bGUuYmFja2dyb3VuZD1kLmNvbG9yCiAgICBpZihsbmFtZSlsbmFtZS50ZXh0Q29udGVudD1kLm5hbWUKICB9KQogIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJ1tkYXRhLWRpcj0iQUxMIl0nKT8uY2xhc3NMaXN0LnRvZ2dsZSgnb24nLFMuZmx0PT09J0FMTCcpCn0KCmZ1bmN0aW9uIHJlbmRlclRhYmxlKCl7CiAgY29uc3QgdGhlYWQ9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3RoZWFkJyksdGJvZHk9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3Rib2R5JykKICBjb25zdCB0b2RheUlzbz1pc29EYXRlKG5ldyBEYXRlKCkpCgogIGxldCB0aD1gPHRyPjx0aCBjbGFzcz0idGgtd2VlayI+PC90aD5gCiAgUy5jaGVmcy5mb3JFYWNoKChjaGVmLGNpKT0+ewogICAgY29uc3QgZGlyPVMuZGlycy5maW5kKGQ9PmQuaWQ9PT1jaGVmLmRpcmVjdG9ySWQpfHxTLmRpcnNbMF0KICAgIGNvbnN0IGRpbT1TLmZsdCE9PSdBTEwnJiZjaGVmLmRpcmVjdG9ySWQhPT1TLmZsdAogICAgY29uc3QgcGFydHM9Y2hlZi5uYW1lLnNwbGl0KCcgJyksbGFzdD1wYXJ0c1swXSxmaXJzdD1wYXJ0cy5zbGljZSgxKS5qb2luKCcgJykKICAgIHRoKz1gPHRoIGNsYXNzPSJ0aC1jaGVmJHtkaW0/JyBkaW0nOicnfSIgc3R5bGU9ImJvcmRlci10b3AtY29sb3I6JHtkaXI/ZGlyLmNvbG9yOicjOTk5J30iPgogICAgICA8ZGl2IGNsYXNzPSJ0aC1sbiIgdGl0bGU9IiR7Y2hlZi5uYW1lfSI+JHtsYXN0fTwvZGl2PgogICAgICA8ZGl2IGNsYXNzPSJ0aC1mbiIgdGl0bGU9IiR7Y2hlZi5uYW1lfSI+JHtmaXJzdH08L2Rpdj4KICAgIDwvdGg+YAogIH0pCiAgdGgrPSc8L3RyPic7IHRoZWFkLmlubmVySFRNTD10aAoKICBsZXQgaHRtbD0nJwogIGZvcihsZXQgd2k9MDt3aTxWSVNJQkxFX1dFRUtTO3dpKyspewogICAgY29uc3Qgb2ZmPVMuc3crd2ksbW9uPW1vbmRheShvZmYpLHduPXdlZWtOdW0obW9uKSx3SWR4PWFic1drSWR4KG9mZiksZW5kPWFkZERheXMobW9uLDUpCiAgICBodG1sKz1gPHRyIGNsYXNzPSJydy13ayI+PHRkIGNsYXNzPSJ3ay1sYmwiPlMke3dufSDCtyAke2ZtdChtb24pfeKAkyR7Zm10KGVuZCl9PC90ZD48dGQgY29sc3Bhbj0iJHtTLmNoZWZzLmxlbmd0aH0iPjwvdGQ+PC90cj5gCiAgICBEQVlTLmZvckVhY2goKGRuLGRpKT0+ewogICAgICBjb25zdCBkYXRlPWFkZERheXMobW9uLGRpKSxpc289aXNvRGF0ZShkYXRlKSxob2w9Z2V0SG9saWRheShkYXRlKSxpc1RvZGF5PWlzbz09PXRvZGF5SXNvCiAgICAgIGh0bWwrPWA8dHIgY2xhc3M9InJ3LWRheSI+PHRkIGNsYXNzPSJkYXktY2VsbCR7aXNUb2RheT8nIHRvZGF5JzonJ30iPjxkaXYgY2xhc3M9ImRheS1pbm5lciI+CiAgICAgICAgPGRpdiBjbGFzcz0iZGF5LW5hbWUke2lzVG9kYXk/JyB0b2RheS10eHQnOmhvbD8nIGhvbC10eHQnOicnfSI+JHtEQVlTX1NIT1JUW2RpXX08L2Rpdj4KICAgICAgICA8ZGl2IGNsYXNzPSJkYXktZGF0ZSI+JHtmbXQoZGF0ZSl9PC9kaXY+CiAgICAgICAgJHtob2w/YDxzcGFuIGNsYXNzPSJob2wtbmFtZSI+JHtob2x9PC9zcGFuPmA6Jyd9CiAgICAgIDwvZGl2PjwvdGQ+YAogICAgICBTLmNoZWZzLmZvckVhY2goKGNoZWYsY2kpPT57CiAgICAgICAgY29uc3Qga2V5PWNrKHdJZHgsZGksY2kpLGNlbGw9Uy5jZWxsc1trZXldCiAgICAgICAgY29uc3QgZGltPVMuZmx0IT09J0FMTCcmJmNoZWYuZGlyZWN0b3JJZCE9PVMuZmx0CiAgICAgICAgY29uc3QgZVR5cGU9KCFjZWxsfHwhY2VsbC50eXBlKSYmaG9sPydGRVJJRV9BVVRPJzooY2VsbD9jZWxsLnR5cGU6JycpCiAgICAgICAgY29uc3QgZU5vdGU9KCFjZWxsfHwhY2VsbC50eXBlKSYmaG9sP2hvbDooY2VsbD9jZWxsLm5vdGU6JycpCiAgICAgICAgbGV0IGJnPScjNkI3MjgwJwogICAgICAgIGlmKGVUeXBlPT09J0NIQU5USUVSJykgICAgICAgYmc9ZGlyQ29sb3IoY2VsbD8uZGlyZWN0b3JJZHx8Y2hlZi5kaXJlY3RvcklkKQogICAgICAgIGVsc2UgaWYoZVR5cGU9PT0nQUJTRU5UJykgICAgYmc9JyNEQzI2MjYnCiAgICAgICAgZWxzZSBpZihlVHlwZT09PSdDT05HRVMnKSAgICBiZz0nIzA4OTFCMicKICAgICAgICBlbHNlIGlmKGVUeXBlPT09J0ZPUk1BVElPTicpIGJnPScjN0MzQUVEJwogICAgICAgIGVsc2UgaWYoZVR5cGU9PT0nRkVSSUVfQVVUTycpYmc9JyNEOTc3MDYnCiAgICAgICAgaHRtbCs9YDx0ZCBjbGFzcz0iY2VsbCR7ZGltPycgZGltJzonJ30ke2hvbD8nIGhvbC1iZyc6Jyd9IiBkYXRhLXc9IiR7d0lkeH0iIGRhdGEtZD0iJHtkaX0iIGRhdGEtYz0iJHtjaX0iCiAgICAgICAgICAke2RpbT8nJzonIG9ubW91c2Vkb3duPSJzdGFydERyYWcoZXZlbnQpIiBvbm1vdXNlb3Zlcj0iZXh0RHJhZyhldmVudCkiIG9uY2xpY2s9Im9uQ2VsbENsaWNrKGV2ZW50KSInfT4KICAgICAgICAgICR7ZVR5cGUKICAgICAgICAgICAgP2A8ZGl2IGNsYXNzPSJjaS1maWxsZWQiIHN0eWxlPSJiYWNrZ3JvdW5kOiR7Ymd9Ij48ZGl2IGNsYXNzPSJjaS10eXBlIj4ke2VUeXBlPT09J0ZFUklFX0FVVE8nPydGw4lSScOJJzplVHlwZX08L2Rpdj4ke2VOb3RlP2A8ZGl2IGNsYXNzPSJjaS1ub3RlIj4ke2VOb3RlfTwvZGl2PmA6Jyd9PC9kaXY+YAogICAgICAgICAgICA6YDxkaXYgY2xhc3M9ImNpLWVtcHR5Ij48L2Rpdj5gfQogICAgICAgIDwvdGQ+YAogICAgICB9KQogICAgICBodG1sKz0nPC90cj4nCiAgICB9KQogIH0KICB0Ym9keS5pbm5lckhUTUw9aHRtbAp9CgovLyDilIDilIAgRHJhZyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKbGV0IERHPXtvbjpmYWxzZSxjaTpudWxsLHM6bnVsbCxlOm51bGwsbW92ZWQ6ZmFsc2V9CmZ1bmN0aW9uIGNlbGxEYXRlKHRkKXtjb25zdCBtPWFic1drVG9Nb25kYXkodGQuZGF0YXNldC53KSxkPWFkZERheXMobSwrdGQuZGF0YXNldC5kKTtkLnNldEhvdXJzKDAsMCwwLDApO3JldHVybiBkfQpmdW5jdGlvbiBzdGFydERyYWcoZXYpe2V2LnByZXZlbnREZWZhdWx0KCk7Y29uc3QgdGQ9ZXYuY3VycmVudFRhcmdldDtERz17b246dHJ1ZSxjaTordGQuZGF0YXNldC5jLHM6Y2VsbERhdGUodGQpLGU6Y2VsbERhdGUodGQpLG1vdmVkOmZhbHNlfTtobERyYWcoKX0KZnVuY3Rpb24gZXh0RHJhZyhldil7aWYoIURHLm9uKXJldHVybjtjb25zdCB0ZD1ldi5jdXJyZW50VGFyZ2V0O2lmKCt0ZC5kYXRhc2V0LmMhPT1ERy5jaSlyZXR1cm47Y29uc3QgZD1jZWxsRGF0ZSh0ZCk7aWYoZC5nZXRUaW1lKCkhPT1ERy5lLmdldFRpbWUoKSlERy5tb3ZlZD10cnVlO0RHLmU9ZDtobERyYWcoKX0KZnVuY3Rpb24gb25DZWxsQ2xpY2soZXYpe2lmKCFERy5tb3ZlZCl7Y29uc3QgdGQ9ZXYuY3VycmVudFRhcmdldDtvcGVuTW9kYWwoK3RkLmRhdGFzZXQuYyxERy5zLERHLmUpfX0KZnVuY3Rpb24gaGxEcmFnKCl7CiAgY29uc3Qgcz1uZXcgRGF0ZShNYXRoLm1pbihERy5zLERHLmUpKSxlPW5ldyBEYXRlKE1hdGgubWF4KERHLnMsREcuZSkpCiAgZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgnLmNlbGwnKS5mb3JFYWNoKHRkPT57CiAgICB0ZC5jbGFzc0xpc3QucmVtb3ZlKCdkcmFnLWhsJykKICAgIGlmKCt0ZC5kYXRhc2V0LmMhPT1ERy5jaSlyZXR1cm4KICAgIGNvbnN0IGQ9Y2VsbERhdGUodGQpO2lmKGQ+PXMmJmQ8PWUpdGQuY2xhc3NMaXN0LmFkZCgnZHJhZy1obCcpCiAgfSkKfQpmdW5jdGlvbiBjbGVhckRyYWcoKXtkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCcuY2VsbC5kcmFnLWhsJykuZm9yRWFjaCh0ZD0+dGQuY2xhc3NMaXN0LnJlbW92ZSgnZHJhZy1obCcpKX0KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignbW91c2V1cCcsKCk9PntpZighREcub24pcmV0dXJuO2NvbnN0IG09REcubW92ZWQ7REcub249ZmFsc2U7Y2xlYXJEcmFnKCk7aWYobSlvcGVuTW9kYWwoREcuY2ksREcucyxERy5lKX0pCmRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ21vdXNlbGVhdmUnLCgpPT57aWYoREcub24pe0RHLm9uPWZhbHNlO2NsZWFyRHJhZygpfX0pCgovLyDilIDilIAgTW9kYWwg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACmxldCBNUz17Y2k6bnVsbCxzOm51bGwsZTpudWxsLHR5cGU6JycsZGlyOidEMScsbm90ZTonJyxyZWM6J25vbmUnfQpmdW5jdGlvbiBvcGVuTW9kYWwoY2ksc3RhcnREYXRlLGVuZERhdGUpewogIGNvbnN0IGNoZWY9Uy5jaGVmc1tjaV0KICBjb25zdCBzPW5ldyBEYXRlKE1hdGgubWluKHN0YXJ0RGF0ZSxlbmREYXRlKSk7cy5zZXRIb3VycygwLDAsMCwwKQogIGNvbnN0IGU9bmV3IERhdGUoTWF0aC5tYXgoc3RhcnREYXRlLGVuZERhdGUpKTtlLnNldEhvdXJzKDAsMCwwLDApCiAgY29uc3Qga2V5PWNrKGRhdGVUb0Fic1drKHMpLGRheUlkeChzKSxjaSksY2VsbD1TLmNlbGxzW2tleV0KICBNUz17Y2kscyxlLHR5cGU6Y2VsbD8udHlwZXx8JycsZGlyOmNlbGw/LmRpcmVjdG9ySWR8fGNoZWY/LmRpcmVjdG9ySWR8fCdEMScsbm90ZTpjZWxsPy5ub3RlfHwnJyxyZWM6J25vbmUnfQogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdtQ2hlZicpLnRleHRDb250ZW50PWNoZWY/Lm5hbWV8fCfigJQnCiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ21TdGFydCcpLnRleHRDb250ZW50PWBEdSAke2ZtdChzKX0gYXVgCiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ21FbmREYXRlJykudmFsdWU9aXNvRGF0ZShlKQogIG9uRW5kQ2hhbmdlKCkKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbURpclJvdycpLmlubmVySFRNTD1TLmRpcnMubWFwKGQ9PgogICAgYDxidXR0b24gY2xhc3M9InJhZGlvLWJ0biR7TVMuZGlyPT09ZC5pZD8nIG9uJzonJ30iIHN0eWxlPSIke01TLmRpcj09PWQuaWQ/YGJhY2tncm91bmQ6JHtkLmNvbG9yfTtib3JkZXItY29sb3I6JHtkLmNvbG9yfWA6YGJvcmRlci1jb2xvcjoke2QuY29sb3J9YH0iIG9uY2xpY2s9InNlbERpcignJHtkLmlkfScsdGhpcywnJHtkLmNvbG9yfScpIj4ke2QubmFtZX08L2J1dHRvbj5gCiAgKS5qb2luKCcnKQogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdtVHlwZUdyaWQnKS5pbm5lckhUTUw9VFlQRVMubWFwKHQ9PnsKICAgIGNvbnN0IGJnPXQuY29sb3I9PT0nZGlyZWN0b3InP2RpckNvbG9yKE1TLmRpcik6dC5jb2xvcixvbj1NUy50eXBlPT09dC52CiAgICByZXR1cm4gYDxidXR0b24gY2xhc3M9InR5cGUtYnRuJHtvbj8nIG9uJzonJ30iIGRhdGEtdj0iJHt0LnZ9IiBzdHlsZT0iJHtvbj9gYmFja2dyb3VuZDoke2JnfTtib3JkZXItY29sb3I6JHtiZ31gOnQudj09PSdDSEFOVElFUic/YGJvcmRlci1jb2xvcjoke2JnfWA6Jyd9IiBvbmNsaWNrPSJzZWxUeXBlKCcke3Qudn0nLHRoaXMsJyR7Ymd9JykiPiR7dC5sYWJlbH08L2J1dHRvbj5gCiAgfSkuam9pbignJykKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbU5vdGUnKS52YWx1ZT1NUy5ub3RlCiAgZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgnLnJlYy1idG4nKS5mb3JFYWNoKGI9PmIuY2xhc3NMaXN0LnRvZ2dsZSgnb24nLGIuZGF0YXNldC5yZWM9PT0nbm9uZScpKQogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdyZWNXa09wdHMnKS5zdHlsZS5kaXNwbGF5PSdub25lJwogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdyZWNVbnRpbE9wdHMnKS5zdHlsZS5kaXNwbGF5PSdub25lJwogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdlbnRyeU92ZXJsYXknKS5jbGFzc0xpc3QuYWRkKCdvcGVuJykKfQpmdW5jdGlvbiBvbkVuZENoYW5nZSgpewogIGNvbnN0IHY9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ21FbmREYXRlJykudmFsdWU7aWYoIXZ8fCFNUy5zKXJldHVybgogIE1TLmU9cGFyc2VJc28odikKICBjb25zdCBkaWZmPU1hdGgucm91bmQoKE1TLmUtTVMucykvODY0MDAwMDApKzEKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbURheUNvdW50JykudGV4dENvbnRlbnQ9ZGlmZj4xP2AoJHtkaWZmfSBqb3VycylgOicnCn0KZnVuY3Rpb24gc2VsRGlyKGlkLGJ0bixjb2xvcil7CiAgTVMuZGlyPWlkCiAgZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgnI21EaXJSb3cgLnJhZGlvLWJ0bicpLmZvckVhY2goYj0+e2IuY2xhc3NMaXN0LnJlbW92ZSgnb24nKTtiLnN0eWxlLmJhY2tncm91bmQ9Jyc7Yi5zdHlsZS5ib3JkZXJDb2xvcj0nJ30pCiAgYnRuLmNsYXNzTGlzdC5hZGQoJ29uJyk7YnRuLnN0eWxlLmJhY2tncm91bmQ9Y29sb3I7YnRuLnN0eWxlLmJvcmRlckNvbG9yPWNvbG9yCiAgY29uc3QgY2I9ZG9jdW1lbnQucXVlcnlTZWxlY3RvcignI21UeXBlR3JpZCAudHlwZS1idG5bZGF0YS12PSJDSEFOVElFUiJdJykKICBpZihjYil7Y2Iuc3R5bGUuYm9yZGVyQ29sb3I9Y29sb3I7aWYoY2IuY2xhc3NMaXN0LmNvbnRhaW5zKCdvbicpKWNiLnN0eWxlLmJhY2tncm91bmQ9Y29sb3J9Cn0KZnVuY3Rpb24gc2VsVHlwZSh2LGJ0bixjb2xvcil7CiAgY29uc3QgZWM9dj09PSdDSEFOVElFUic/ZGlyQ29sb3IoTVMuZGlyKTpjb2xvcjtNUy50eXBlPXYKICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCcjbVR5cGVHcmlkIC50eXBlLWJ0bicpLmZvckVhY2goYj0+ewogICAgYi5jbGFzc0xpc3QucmVtb3ZlKCdvbicpO2Iuc3R5bGUuYmFja2dyb3VuZD0nJwogICAgYi5kYXRhc2V0LnY9PT0nQ0hBTlRJRVInP2Iuc3R5bGUuYm9yZGVyQ29sb3I9ZGlyQ29sb3IoTVMuZGlyKTpiLnN0eWxlLmJvcmRlckNvbG9yPScnCiAgfSkKICBidG4uY2xhc3NMaXN0LmFkZCgnb24nKTtidG4uc3R5bGUuYmFja2dyb3VuZD1lYztidG4uc3R5bGUuYm9yZGVyQ29sb3I9ZWMKfQpmdW5jdGlvbiBzZXRSZWModHlwZSxidG4pewogIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJy5yZWMtYnRuJykuZm9yRWFjaChiPT5iLmNsYXNzTGlzdC5yZW1vdmUoJ29uJykpO2J0bi5jbGFzc0xpc3QuYWRkKCdvbicpO01TLnJlYz10eXBlCiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3JlY1drT3B0cycpLnN0eWxlLmRpc3BsYXk9dHlwZT09PSd3ZWVrbHknPydmbGV4Jzonbm9uZScKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncmVjVW50aWxPcHRzJykuc3R5bGUuZGlzcGxheT10eXBlPT09J3VudGlsJz8nYmxvY2snOidub25lJwp9CmZ1bmN0aW9uIGNsb3NlTW9kYWwoKXtkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnZW50cnlPdmVybGF5JykuY2xhc3NMaXN0LnJlbW92ZSgnb3BlbicpfQpmdW5jdGlvbiBjbG9zZVNldHRpbmdzKCl7ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3NldHRpbmdzT3ZlcmxheScpLmNsYXNzTGlzdC5yZW1vdmUoJ29wZW4nKX0KZnVuY3Rpb24gY2xlYXJDZWxsKCl7TVMudHlwZT0nJztkb1NhdmUoYnVpbGREYXRlcygpLCcnKX0KCmZ1bmN0aW9uIHNhdmVDZWxsKCl7CiAgY29uc3Qgbm90ZT1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbU5vdGUnKS52YWx1ZS50cmltKCkKICBjb25zdCBldj1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbUVuZERhdGUnKS52YWx1ZTtpZihldilNUy5lPXBhcnNlSXNvKGV2KQogIGNvbnN0IHM9bmV3IERhdGUoTWF0aC5taW4oTVMucyxNUy5lKSk7cy5zZXRIb3VycygwLDAsMCwwKQogIGNvbnN0IGU9bmV3IERhdGUoTWF0aC5tYXgoTVMucyxNUy5lKSk7ZS5zZXRIb3VycygwLDAsMCwwKQogIE1TLnM9cztNUy5lPWUKICBjb25zdCBkYXRlcz1idWlsZERhdGVzKCkKICBpZighTVMudHlwZSl7ZG9TYXZlKGRhdGVzLG5vdGUpO3JldHVybn0KICBjaGVja0NvbmZsaWN0cyhkYXRlcyxub3RlKQp9CgpmdW5jdGlvbiBidWlsZERhdGVzKCl7CiAgY29uc3QgZGF0ZXM9W10sY3VyPW5ldyBEYXRlKE1TLnMpCiAgd2hpbGUoY3VyPD1NUy5lKXtpZihjdXIuZ2V0RGF5KCkhPT0wKWRhdGVzLnB1c2gobmV3IERhdGUoY3VyKSk7Y3VyLnNldERhdGUoY3VyLmdldERhdGUoKSsxKX0KICBpZihNUy5yZWM9PT0nd2Vla2x5Jyl7CiAgICBjb25zdCB3PU1hdGgubWF4KDEscGFyc2VJbnQoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3JlY1dlZWtzJyk/LnZhbHVlKXx8NCksc3Bhbj1NUy5lLU1TLnMKICAgIGZvcihsZXQgaT0xO2k8dztpKyspe2NvbnN0IHJzPW5ldyBEYXRlKE1TLnMuZ2V0VGltZSgpK2kqNyo4NjQwMDAwMCkscmU9bmV3IERhdGUocnMuZ2V0VGltZSgpK3NwYW4pLGM9bmV3IERhdGUocnMpO3doaWxlKGM8PXJlKXtpZihjLmdldERheSgpIT09MClkYXRlcy5wdXNoKG5ldyBEYXRlKGMpKTtjLnNldERhdGUoYy5nZXREYXRlKCkrMSl9fQogIH0gZWxzZSBpZihNUy5yZWM9PT0ndW50aWwnKXsKICAgIGNvbnN0IHN0cj1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncmVjVW50aWxEYXRlJyk/LnZhbHVlCiAgICBpZihzdHIpe2NvbnN0IHVudGlsPXBhcnNlSXNvKHN0ciksc3Bhbj1NUy5lLU1TLnM7bGV0IHJzPW5ldyBEYXRlKE1TLnMuZ2V0VGltZSgpKzcqODY0MDAwMDApO3doaWxlKHJzPD11bnRpbCl7Y29uc3QgcmU9bmV3IERhdGUoTWF0aC5taW4ocnMuZ2V0VGltZSgpK3NwYW4sdW50aWwuZ2V0VGltZSgpKSksYz1uZXcgRGF0ZShycyk7d2hpbGUoYzw9cmUpe2lmKGMuZ2V0RGF5KCkhPT0wKWRhdGVzLnB1c2gobmV3IERhdGUoYykpO2Muc2V0RGF0ZShjLmdldERhdGUoKSsxKX1ycz1uZXcgRGF0ZShycy5nZXRUaW1lKCkrNyo4NjQwMDAwMCl9fQogIH0KICByZXR1cm4gZGF0ZXMKfQoKLy8g4pSA4pSAIENvbmZsaXRzIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgApsZXQgX3BlbmRpbmc9bnVsbApmdW5jdGlvbiBjaGVja0NvbmZsaWN0cyhkYXRlcyxub3RlKXsKICBjb25zdCBjb25mbGljdHM9ZGF0ZXMuZmlsdGVyKGQ9Pntjb25zdCBjPVMuY2VsbHNbY2soZGF0ZVRvQWJzV2soZCksZGF5SWR4KGQpLE1TLmNpKV07cmV0dXJuIGMmJmMudHlwZSYmKGMudHlwZSE9PU1TLnR5cGV8fGMubm90ZSE9PW5vdGUpfSkKICBpZighY29uZmxpY3RzLmxlbmd0aCl7ZG9TYXZlKGRhdGVzLG5vdGUpO3JldHVybn0KICBfcGVuZGluZz17ZGF0ZXMsbm90ZX0KICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnY29uZmxpY3RTdWInKS50ZXh0Q29udGVudD1gJHtjb25mbGljdHMubGVuZ3RofSBjb25mbGl0JHtjb25mbGljdHMubGVuZ3RoPjE/J3MnOicnfSDigJQgJHtTLmNoZWZzW01TLmNpXT8ubmFtZX1gCiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2NvbmZsaWN0TGlzdCcpLmlubmVySFRNTD1jb25mbGljdHMubWFwKGQ9PnsKICAgIGNvbnN0IGM9Uy5jZWxsc1tjayhkYXRlVG9BYnNXayhkKSxkYXlJZHgoZCksTVMuY2kpXQogICAgY29uc3QgYmc9Yy50eXBlPT09J0NIQU5USUVSJz9kaXJDb2xvcihjLmRpcmVjdG9ySWQpOihUWVBFUy5maW5kKHg9Pngudj09PWMudHlwZSk/LmNvbG9yfHwnIzZCNzI4MCcpCiAgICByZXR1cm4gYDxkaXYgY2xhc3M9ImNvbmZsaWN0LWl0ZW0iPjxzcGFuIHN0eWxlPSJjb2xvcjp2YXIoLS10ZXh0Mik7bWluLXdpZHRoOjcwcHgiPiR7REFZU1tkYXlJZHgoZCldfSAke2ZtdChkKX08L3NwYW4+PHNwYW4gY2xhc3M9ImMtYmFkZ2UiIHN0eWxlPSJiYWNrZ3JvdW5kOiR7Ymd9Ij4ke2MudHlwZX08L3NwYW4+JHtjLm5vdGU/YDxzcGFuIHN0eWxlPSJjb2xvcjp2YXIoLS10ZXh0Myk7Zm9udC1zaXplOjExcHgiPiR7Yy5ub3RlfTwvc3Bhbj5gOicnfTwvZGl2PmAKICB9KS5qb2luKCcnKQogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdjb25mbGljdE92ZXJsYXknKS5jbGFzc0xpc3QuYWRkKCdvcGVuJykKfQpmdW5jdGlvbiBjYW5jZWxDb25mbGljdCgpe2RvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdjb25mbGljdE92ZXJsYXknKS5jbGFzc0xpc3QucmVtb3ZlKCdvcGVuJyk7X3BlbmRpbmc9bnVsbH0KZnVuY3Rpb24gY29uZmlybUNvbmZsaWN0KCl7ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2NvbmZsaWN0T3ZlcmxheScpLmNsYXNzTGlzdC5yZW1vdmUoJ29wZW4nKTtpZihfcGVuZGluZyl7ZG9TYXZlKF9wZW5kaW5nLmRhdGVzLF9wZW5kaW5nLm5vdGUpO19wZW5kaW5nPW51bGx9fQoKLy8g4pSA4pSAIFNhdXZlZ2FyZGUg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACmFzeW5jIGZ1bmN0aW9uIGRvU2F2ZShkYXRlcyxub3RlKXsKICBjb25zdCBlbnRyaWVzPWRhdGVzLm1hcChkPT4oe2tleTpjayhkYXRlVG9BYnNXayhkKSxkYXlJZHgoZCksTVMuY2kpLHR5cGU6TVMudHlwZXx8Jycsbm90ZSxkaXJlY3RvcklkOk1TLmRpcn0pKQogIGVudHJpZXMuZm9yRWFjaCgoe2tleSx0eXBlLG5vdGUsZGlyZWN0b3JJZH0pPT57CiAgICBpZih0eXBlKVMuY2VsbHNba2V5XT17dHlwZSxub3RlLGRpcmVjdG9ySWQsbW9kaWZpZWRBdDpuZXcgRGF0ZSgpLnRvSVNPU3RyaW5nKCl9CiAgICBlbHNlIGRlbGV0ZSBTLmNlbGxzW2tleV0KICB9KQogIHJlbmRlclRhYmxlKCk7Y2xvc2VNb2RhbCgpO3NldFN5bmMoJ3N5bmNpbmcnKQogIGNvbnN0IHNhdmVkVHlwZT1NUy50eXBlLGNudD1kYXRlcy5sZW5ndGgKICB0cnkgewogICAgYXdhaXQgZ2FzQ2FsbCgnc2F2ZScsZW50cmllcyk7c2V0U3luYygnb2snKQogICAgdG9hc3Qoc2F2ZWRUeXBlP2DinJMgJHtjbnR9IGpvdXIke2NudD4xPydzJzonJ30gZW5yZWdpc3Ryw6kke2NudD4xPydzJzonJ31gOifinJMgRWZmYWPDqScpCiAgfSBjYXRjaChlKXtzZXRTeW5jKCdlcnInKTt0b2FzdCgn4pqgIEVycmV1ciBzYXV2ZWdhcmRlJyx0cnVlKX0KfQoKLy8g4pSA4pSAIFBhcmFtw6h0cmVzIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgApmdW5jdGlvbiBvcGVuU2V0dGluZ3MoKXsKICBjb25zdCBjdXJyZW50VXJsPWxvY2FsU3RvcmFnZS5nZXRJdGVtKCdjaG9rX2dhc191cmwnKXx8JycKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnc2V0dGluZ3NCb2R5JykuaW5uZXJIVE1MPWAKICAgIDxkaXYgY2xhc3M9InMtc2VjdGlvbiI+CiAgICAgIDxkaXYgY2xhc3M9InMtdGl0bGUiPlVSTCBBcHBzIFNjcmlwdDwvZGl2PgogICAgICA8ZGl2IGNsYXNzPSJzLXJvdyI+PGlucHV0IHR5cGU9InRleHQiIGNsYXNzPSJmLWlucHV0IiBpZD0iY2ZnX3VybCIgdmFsdWU9IiR7Y3VycmVudFVybH0iIHN0eWxlPSJmb250LXNpemU6MTFweDtmbGV4OjEiPjwvZGl2PgogICAgICA8ZGl2IHN0eWxlPSJmb250LXNpemU6MTFweDtjb2xvcjp2YXIoLS10ZXh0MykiPk1vZGlmaWV6IHNpIHZvdXMgYXZleiByZWRlcGxvecOpIEFwcHMgU2NyaXB0LjwvZGl2PgogICAgPC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJzLXNlY3Rpb24iPgogICAgICA8ZGl2IGNsYXNzPSJzLXRpdGxlIj5EaXJlY3RldXJzPC9kaXY+CiAgICAgICR7Uy5kaXJzLm1hcChkPT5gPGRpdiBjbGFzcz0icy1yb3ciPjxpbnB1dCB0eXBlPSJjb2xvciIgaWQ9ImNmZ19jb2xvcl8ke2QuaWR9IiB2YWx1ZT0iJHtkLmNvbG9yfSI+PGlucHV0IHR5cGU9InRleHQiIGNsYXNzPSJmLWlucHV0IiBpZD0iY2ZnX25hbWVfJHtkLmlkfSIgdmFsdWU9IiR7ZC5uYW1lfSIgc3R5bGU9ImZsZXg6MSI+PC9kaXY+YCkuam9pbignJyl9CiAgICA8L2Rpdj4KICAgIDxkaXYgY2xhc3M9InMtc2VjdGlvbiI+CiAgICAgIDxkaXYgY2xhc3M9InMtdGl0bGUiPkNoZWZzIGQnw6lxdWlwZSAoJHtTLmNoZWZzLmxlbmd0aH0pPC9kaXY+CiAgICAgIDxkaXYgY2xhc3M9ImNoZWZzLWdyaWQiPgogICAgICAgICR7Uy5jaGVmcy5tYXAoKGMsaSk9PmA8ZGl2IGNsYXNzPSJjaGVmLXJvdyI+CiAgICAgICAgICA8aW5wdXQgdHlwZT0idGV4dCIgY2xhc3M9ImYtaW5wdXQiIGlkPSJjbl8ke2l9IiB2YWx1ZT0iJHtjLm5hbWV9IiBzdHlsZT0iZm9udC1zaXplOjEycHg7cGFkZGluZzo1cHggN3B4Ij4KICAgICAgICAgIDxzZWxlY3QgaWQ9ImNkXyR7aX0iPiR7Uy5kaXJzLm1hcChkPT5gPG9wdGlvbiB2YWx1ZT0iJHtkLmlkfSIke2MuZGlyZWN0b3JJZD09PWQuaWQ/JyBzZWxlY3RlZCc6Jyd9PiR7ZC5uYW1lfTwvb3B0aW9uPmApLmpvaW4oJycpfTwvc2VsZWN0PgogICAgICAgIDwvZGl2PmApLmpvaW4oJycpfQogICAgICA8L2Rpdj4KICAgIDwvZGl2PmAKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnc2V0dGluZ3NPdmVybGF5JykuY2xhc3NMaXN0LmFkZCgnb3BlbicpCn0KCmFzeW5jIGZ1bmN0aW9uIHNhdmVTZXR0aW5ncygpewogIGNvbnN0IG5ld1VybD1jbGVhblVybChkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnY2ZnX3VybCcpPy52YWx1ZXx8JycpCiAgaWYobmV3VXJsJiZuZXdVcmwhPT1TLmdhc1VybCl7bG9jYWxTdG9yYWdlLnNldEl0ZW0oJ2Nob2tfZ2FzX3VybCcsbmV3VXJsKTtTLmdhc1VybD1uZXdVcmx9CiAgY29uc3QgbmQ9Uy5kaXJzLm1hcChkPT4oey4uLmQsbmFtZTpkb2N1bWVudC5nZXRFbGVtZW50QnlJZChgY2ZnX25hbWVfJHtkLmlkfWApPy52YWx1ZXx8ZC5uYW1lLGNvbG9yOmRvY3VtZW50LmdldEVsZW1lbnRCeUlkKGBjZmdfY29sb3JfJHtkLmlkfWApPy52YWx1ZXx8ZC5jb2xvcn0pKQogIGNvbnN0IG5jPVMuY2hlZnMubWFwKChjLGkpPT4oey4uLmMsbmFtZTpkb2N1bWVudC5nZXRFbGVtZW50QnlJZChgY25fJHtpfWApPy52YWx1ZXx8Yy5uYW1lLGRpcmVjdG9ySWQ6ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoYGNkXyR7aX1gKT8udmFsdWV8fGMuZGlyZWN0b3JJZH0pKQogIFMuZGlycz1uZDtTLmNoZWZzPW5jO2Nsb3NlU2V0dGluZ3MoKTtyZW5kZXIoKTtzZXRTeW5jKCdzeW5jaW5nJykKICB0cnl7YXdhaXQgZ2FzQ2FsbCgnc2F2ZUNvbmZpZycse2RpcmVjdG9yczpuZCxjaGVmczpuY30pO3NldFN5bmMoJ29rJyk7dG9hc3QoJ+KckyBDb25maWd1cmF0aW9uIHNhdXZlZ2FyZMOpZScpfQogIGNhdGNoKGUpe3NldFN5bmMoJ2VycicpO3RvYXN0KCfimqAgRXJyZXVyIGNvbmZpZ3VyYXRpb24nLHRydWUpfQp9Cgphc3luYyBmdW5jdGlvbiByZXNldEFsbCgpewogIGlmKCFjb25maXJtKCdSw6lpbml0aWFsaXNlciBUT1VURVMgbGVzIGRvbm7DqWVzIGR1IHBsYW5uaW5nID9cbkNldHRlIGFjdGlvbiBlc3QgaXJyw6l2ZXJzaWJsZS4nKSlyZXR1cm4KICBzZXRTeW5jKCdzeW5jaW5nJykKICB0cnl7YXdhaXQgZ2FzQ2FsbCgncmVzZXQnKTtzZXRTeW5jKCdvaycpO2xvYWRBbGwoKTt0b2FzdCgn4pyTIFBsYW5uaW5nIHLDqWluaXRpYWxpc8OpJyl9CiAgY2F0Y2goZSl7c2V0U3luYygnZXJyJyk7dG9hc3QoJ+KaoCBFcnJldXIgcmVzZXQnLHRydWUpfQp9CgovLyDilIDilIAgWm9vbSDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKZnVuY3Rpb24gc2V0Wm9vbSh6KXsKICBTLnpvb209egogIGNvbnN0IHRibD1kb2N1bWVudC5xdWVyeVNlbGVjdG9yKCcudGJsLXNjcm9sbCB0YWJsZScpCiAgaWYodGJsKSB0Ymwuc3R5bGUuem9vbT16CiAgbG9jYWxTdG9yYWdlLnNldEl0ZW0oJ2Nob2tfem9vbScseikKICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCcuem9vbS1idG4nKS5mb3JFYWNoKGI9PmIuY2xhc3NMaXN0LnRvZ2dsZSgnb24nLCBwYXJzZUZsb2F0KGIuZGF0YXNldC56KT09PXopKQp9CmZ1bmN0aW9uIGluaXRab29tKCl7CiAgY29uc3Qgc2F2ZWQ9cGFyc2VGbG9hdChsb2NhbFN0b3JhZ2UuZ2V0SXRlbSgnY2hva196b29tJyl8fCcxJykKICBzZXRab29tKHNhdmVkKQp9CgovLyDilIDilIAgTmF2aWdhdGlvbiDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKZnVuY3Rpb24gc2hpZnQobil7Uy5zdys9bjtyZW5kZXIoKX0KZnVuY3Rpb24gZ29Ub2RheSgpe1Muc3c9MDtyZW5kZXIoKX0KZnVuY3Rpb24gc2V0RmlsdGVyKGRpcixidG4pe1MuZmx0PWRpcjtkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCcuZmx0JykuZm9yRWFjaChiPT5iLmNsYXNzTGlzdC5yZW1vdmUoJ29uJykpO2J0bi5jbGFzc0xpc3QuYWRkKCdvbicpO3JlbmRlcigpfQoKLy8g4pSA4pSAIFRvYXN0IOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgApmdW5jdGlvbiB0b2FzdChtc2csaXNFcnI9ZmFsc2UpewogIGNvbnN0IHQ9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3RvYXN0Jyk7dC50ZXh0Q29udGVudD1tc2cKICB0LnN0eWxlLmJhY2tncm91bmQ9aXNFcnI/JyNEQzI2MjYnOicjMUMyMzMzJzt0LmNsYXNzTGlzdC5hZGQoJ3Nob3cnKQogIHNldFRpbWVvdXQoKCk9PnQuY2xhc3NMaXN0LnJlbW92ZSgnc2hvdycpLDI4MDApCn0KCndpbmRvdy5vbmxvYWQ9aW5pdEFwcAo=',_a=atob(_b),_u=new Uint8Array(_a.length);
+for(var _i=0;_i<_a.length;_i++)_u[_i]=_a.charCodeAt(_i);
+var _t=new TextDecoder().decode(_u),_s=document.createElement('script');
+_s.text=_t;document.head.appendChild(_s)
+})()
 </script>
 </body>
 </html>
